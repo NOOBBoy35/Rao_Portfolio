@@ -200,69 +200,27 @@ function initIntroVideoLoader() {
     }, 12000);
 }
 
-/* Zero-Delay Instant Ping-Pong (Forward -> Rewind -> Forward) Hero Circuit Video Loop */
+/* Smooth Hardware-Accelerated Hero Circuit Video Controller */
 function initHeroVideoPingPong() {
     const video = document.getElementById('heroCircuitVideo');
     if (!video) return;
 
-    let isRewinding = false;
-    let animFrame = null;
-    let lastTime = 0;
+    video.loop = true;
+    video.muted = true;
+    video.playsInline = true;
 
-    video.play().catch(e => console.log('Autoplay prevented:', e));
-
-    video.addEventListener('timeupdate', () => {
-        // Trigger rewind 0.08s before duration end to avoid end-of-buffer stall
-        if (!isRewinding && video.duration && video.currentTime >= video.duration - 0.08) {
-            startRewind();
-        }
-    });
-
-    video.addEventListener('ended', () => {
-        if (!isRewinding) {
-            startRewind();
-        }
-    });
-
-    function startRewind() {
-        if (isRewinding) return;
-        isRewinding = true;
-
-        lastTime = performance.now();
-
-        function stepReverse(now) {
-            if (!isRewinding) return;
-
-            const delta = (now - lastTime) / 1000;
-            lastTime = now;
-
-            const nextTime = video.currentTime - (delta * 1.05);
-
-            if (nextTime <= 0.05) {
-                // Instantly reset to start and resume forward playback with zero delay
-                isRewinding = false;
-                if (animFrame) cancelAnimationFrame(animFrame);
-                video.currentTime = 0.001;
-                video.play().catch(e => console.log(e));
-            } else {
-                video.currentTime = nextTime;
-                
-                // Pre-warm video play engine when reaching close to start (< 0.25s) to eliminate play startup pause
-                if (nextTime <= 0.25 && video.paused) {
-                    video.play().catch(() => {});
-                } else if (nextTime > 0.25 && !video.paused) {
-                    video.pause();
-                }
-
-                animFrame = requestAnimationFrame(stepReverse);
-            }
-        }
-
-        animFrame = requestAnimationFrame(now => {
-            lastTime = now;
-            stepReverse(now);
+    // Ensure fluid uninterrupted GPU playback
+    const startVideo = () => {
+        video.play().catch(e => {
+            console.log('Video autoplay deferred:', e);
         });
-    }
+    };
+
+    startVideo();
+
+    // Secondary listener in case browser defers playback until first interaction
+    document.addEventListener('click', startVideo, { once: true });
+    document.addEventListener('touchstart', startVideo, { once: true });
 }
 
 /* Mobile Menu Drawer Toggle */
