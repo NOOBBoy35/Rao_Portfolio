@@ -178,12 +178,18 @@
             border-color: var(--accent-cyan);
         }
 
-        .project-item-thumb {
-            width: 44px;
-            height: 44px;
+        .project-item-icon {
+            width: 38px;
+            height: 38px;
             border-radius: 4px;
-            object-fit: cover;
-            background: #111;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
         }
 
         .project-item-info {
@@ -500,11 +506,6 @@
                     </div>
 
                     <div class="form-group full-width">
-                        <label class="form-label">THUMBNAIL IMAGE URL / PATH</label>
-                        <input type="text" id="formThumbnail" class="form-input" placeholder="e.g. https://images.unsplash.com/... or assets/project_cpr.jpg">
-                    </div>
-
-                    <div class="form-group full-width">
                         <label class="form-label">LINKEDIN POST URL</label>
                         <input type="url" id="formLinkedinUrl" class="form-input" placeholder="https://www.linkedin.com/posts/...">
                     </div>
@@ -652,7 +653,7 @@
                 div.onclick = () => selectProject(item.id);
 
                 div.innerHTML = `
-                    <img src="${item.thumbnail || 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=200&q=80'}" class="project-item-thumb">
+                    <div class="project-item-icon"><i class="ri-folder-tech-line"></i></div>
                     <div class="project-item-info">
                         <div class="project-item-title">${item.title}</div>
                         <span class="project-item-badge">${item.badge || item.category}</span>
@@ -684,7 +685,6 @@
             document.getElementById('formBadge').value = item.badge || '';
             document.getElementById('formTimeline').value = item.timeline || '';
             document.getElementById('formRole').value = item.role || '';
-            document.getElementById('formThumbnail').value = item.thumbnail || '';
             document.getElementById('formLinkedinUrl').value = item.linkedinUrl || '';
             document.getElementById('formOverview').value = item.overview || '';
 
@@ -725,7 +725,6 @@
                 badge: document.getElementById('formBadge').value,
                 timeline: document.getElementById('formTimeline').value,
                 role: document.getElementById('formRole').value,
-                thumbnail: document.getElementById('formThumbnail').value,
                 linkedinUrl: document.getElementById('formLinkedinUrl').value,
                 overview: document.getElementById('formOverview').value,
                 metrics: [
