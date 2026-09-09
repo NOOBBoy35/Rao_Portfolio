@@ -1,0 +1,86 @@
+/* ==========================================================================
+   DESKTOP & LAPTOP SPECIFIC STYLESHEET (WINDOW LAPTOP OPTIMIZATIONS)
+   ========================================================================== */
+
+@media screen and (min-width: 900px) {
+    /* Hide mobile menu toggle on desktop */
+    .mobile-toggle,
+    .mobile-drawer {
+        display: none !important;
+    }
+
+    /* Desktop Navigation alignment */
+    #desktopNav {
+        display: flex;
+    }
+
+    /* High density hero grid layout */
+    .hero-container {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 4rem;
+        min-height: calc(85vh - 5rem);
+    }
+
+    .hero-title {
+        font-size: 4.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.75rem;
+    }
+
+    /* Blueprint Card hover effects on laptop */
+    .blueprint-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .blueprint-card:hover {
+        border-color: var(--accent-cyan);
+        box-shadow: 0 16px 40px rgba(0, 240, 255, 0.15);
+    }
+
+    /* 2-column or 3-column project cards layout */
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Experience timeline wide view */
+    .timeline-card {
+        padding: 2.2rem;
+    }
+
+    /* Contact box layout */
+    .contact-cards-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Desktop scrollbar styling */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--bg-primary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--border-color);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--accent-cyan);
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .section-container,
+    .header-container,
+    .footer-container {
+        max-width: 1400px;
+    }
+
+    .hero-title {
+        font-size: 4.6rem;
+    }
+}
