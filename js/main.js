@@ -127,6 +127,7 @@ const projectDetailsDB = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    initDynamicProjects();
     initIntroVideoLoader();
     initMobileMenu();
     initCookieBanner();
@@ -392,4 +393,74 @@ function closeProjectModal() {
     if (modal) {
         modal.classList.remove('active');
     }
+}
+
+/* Dynamic Projects Rendering from LocalStorage / JSON Dataset */
+async function initDynamicProjects() {
+    const grid = document.getElementById('projectsGrid');
+    if (!grid) return;
+
+    let projects = [];
+    const localData = localStorage.getItem('rao_portfolio_projects');
+    if (localData) {
+        try { projects = JSON.parse(localData); } catch (e) {}
+    }
+
+    if (!projects || projects.length === 0) {
+        try {
+            const res = await fetch('data/projects.json');
+            projects = await res.json();
+        } catch (err) {
+            console.warn("Using inline fallback projects", err);
+        }
+    }
+
+    if (!projects || projects.length === 0) return;
+
+    // Register all project objects into projectDetailsDB for modal rendering
+    projects.forEach(p => {
+        projectDetailsDB[p.id] = p;
+    });
+
+    // Render cards into #projectsGrid
+    grid.innerHTML = projects.map(p => {
+        const metricsHtml = (p.metrics || []).map(m => `
+            <div class="metric-item">
+                <span class="metric-val" style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--text-primary); display: block;">${m.val}</span>
+                <span class="metric-label" style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">${m.label}</span>
+            </div>
+        `).join('');
+
+        const tagsHtml = (p.tags || []).map(t => `<span class="prj-tag" style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-cyan); background: rgba(0,240,255,0.08); border: 1px solid rgba(0,240,255,0.2); padding: 0.2rem 0.5rem; border-radius: 3px;">${t}</span>`).join('');
+
+        return `
+            <div class="project-card" data-project="${p.id}" onclick="openProjectModal('${p.id}')">
+                <div class="prj-top-diagram">
+                    <svg class="mini-diagram-svg" viewBox="0 0 300 40">
+                        <path d="M10,20 L80,20 L95,5 L110,35 L125,10 L140,30 L155,20 L290,20" stroke="#00f0ff" stroke-width="1.5" fill="none"/>
+                        <circle cx="95" cy="5" r="3" fill="#00f0ff" />
+                        <circle cx="125" cy="10" r="3" fill="#00f0ff" />
+                    </svg>
+                </div>
+                <div class="prj-content">
+                    <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-cyan); letter-spacing: 0.1em; margin-bottom: 0.5rem; text-transform: uppercase; font-weight: 600;">${p.badge || p.category}</div>
+                    <h3 class="prj-title" style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.6rem;">${p.title}</h3>
+                    <p class="prj-desc" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">${p.overview}</p>
+                    
+                    ${metricsHtml ? `<div class="prj-metrics" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin: 1rem 0; padding: 0.75rem; background: rgba(0,0,0,0.3); border-radius: 4px; border: 1px solid rgba(0,240,255,0.15); text-align: center;">${metricsHtml}</div>` : ''}
+
+                    <div class="prj-tags" style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem;">
+                        ${tagsHtml}
+                    </div>
+
+                    <div class="prj-card-actions" style="margin-top: auto;">
+                        <button class="btn-prj-details" onclick="event.stopPropagation(); openProjectModal('${p.id}')">
+                            <span>VIEW DETAILS & SPECS</span>
+                            <i class="ri-arrow-right-up-line"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
 }

@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Admin Panel | Shaheer Tahir Rao Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Remixicon CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+
+    <!-- Shared & Admin Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        body {
+            background-color: #05080f;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ADMIN NAVBAR */
+        .admin-nav {
+            background: #070c16;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .admin-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: var(--font-brand);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .admin-brand-tag {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            letter-spacing: 0.1em;
+        }
+
+        .admin-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-admin {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            text-decoration: none;
+            border: 1px solid transparent;
+        }
+
+        .btn-admin-primary {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+        }
+
+        .btn-admin-primary:hover {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .btn-admin-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+
+        .btn-admin-outline:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .btn-admin-danger {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-admin-danger:hover {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        /* ADMIN LAYOUT */
+        .admin-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 2rem;
+            flex: 1;
+        }
+
+        /* SIDEBAR LIST */
+        .admin-sidebar {
+            background: #070c16;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: fit-content;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.8rem;
+        }
+
+        .sidebar-title {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .project-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .project-item:hover, .project-item.active {
+            background: rgba(0, 240, 255, 0.08);
+            border-color: var(--accent-cyan);
+        }
+
+        .project-item-thumb {
+            width: 44px;
+            height: 44px;
+            border-radius: 4px;
+            object-fit: cover;
+            background: #111;
+        }
+
+        .project-item-info {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .project-item-title {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .project-item-badge {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-cyan);
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        .project-item-actions {
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .btn-icon {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.3rem;
+            border-radius: 4px;
+            transition: var(--transition-fast);
+        }
+
+        .btn-icon:hover {
+            color: var(--accent-cyan);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-icon-danger:hover {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.2);
+        }
+
+        /* MAIN EDITOR FORM */
+        .admin-main {
+            background: #070c16;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .editor-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .editor-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--text-primary);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-cyan);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .form-input, .form-textarea, .form-select {
+            background: rgba(10, 16, 28, 0.8);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            padding: 0.7rem 0.9rem;
+            border-radius: 4px;
+            outline: none;
+            transition: var(--transition-fast);
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .metric-box {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .editor-footer {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* PASSCODE OVERLAY */
+        .passcode-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 8, 15, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .passcode-card {
+            background: #070c16;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 8px;
+            padding: 2.5rem;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.2);
+        }
+
+        .passcode-icon {
+            font-size: 2.5rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+        }
+
+        .passcode-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .passcode-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* TOAST NOTIFICATION */
+        .toast-admin {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #080d19;
+            border: 1px solid var(--accent-cyan);
+            color: var(--text-primary);
+            padding: 0.8rem 1.4rem;
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .toast-admin.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PASSCODE SECURITY MODAL -->
+    <div class="passcode-modal" id="passcodeModal">
+        <div class="passcode-card">
+            <i class="ri-shield-keyhole-line passcode-icon"></i>
+            <h2 class="passcode-title">PROJECT MANAGEMENT CMS</h2>
+            <p class="passcode-desc">Enter authorization key to access the portfolio project editor.</p>
+            
+            <form id="passcodeForm" style="display: flex; flex-direction: column; gap: 1rem;">
+                <input type="password" id="passcodeInput" class="form-input" placeholder="Enter Security Code (Default: rao2026)" style="text-align: center; letter-spacing: 0.2em; font-family: var(--font-mono);" required>
+                <button type="submit" class="btn-admin btn-admin-primary" style="justify-content: center; padding: 0.8rem;">
+                    <i class="ri-lock-unlock-line"></i> UNLOCK CMS
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ADMIN NAVBAR -->
+    <header class="admin-nav">
+        <div class="admin-brand">
+            <i class="ri-pulse-fill" style="color: var(--accent-cyan);"></i>
+            <span>SHAHEER TAHIR RAO</span>
+            <span class="admin-brand-tag">VISUAL CMS v1.0</span>
+        </div>
+
+        <div class="admin-actions">
+            <a href="index.html" class="btn-admin btn-admin-outline" target="_blank">
+                <i class="ri-external-link-line"></i> VIEW LIVE SITE
+            </a>
+            <button class="btn-admin btn-admin-outline" id="resetDefaultsBtn">
+                <i class="ri-refresh-line"></i> RESET TO DEFAULTS
+            </button>
+            <button class="btn-admin btn-admin-primary" id="exportJsonBtn">
+                <i class="ri-download-cloud-line"></i> EXPORT PROJECTS.JSON
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN ADMIN CONTENT CONTAINER -->
+    <div class="admin-container">
+        
+        <!-- SIDEBAR PROJECT LIST -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <span class="sidebar-title"><i class="ri-folder-3-line"></i> PROJECTS (<span id="projectCount">0</span>)</span>
+                <button class="btn-admin btn-admin-primary" id="addNewProjectBtn" style="padding: 0.35rem 0.7rem; font-size: 0.75rem;">
+                    <i class="ri-add-line"></i> NEW
+                </button>
+            </div>
+
+            <div class="project-list" id="projectList">
+                <!-- Dynamically Rendered Project List Items -->
+            </div>
+        </aside>
+
+        <!-- MAIN PROJECT FORM EDITOR -->
+        <main class="admin-main">
+            <div class="editor-header">
+                <div>
+                    <h2 class="editor-title" id="editorHeaderTitle">Edit Project</h2>
+                    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-cyan);" id="editorProjectIdTag">ID: --</span>
+                </div>
+                
+                <button class="btn-admin btn-admin-danger" id="deleteProjectBtn">
+                    <i class="ri-delete-bin-line"></i> DELETE PROJECT
+                </button>
+            </div>
+
+            <form id="projectForm">
+                <input type="hidden" id="formProjectId">
+
+                <div class="form-grid">
+                    
+                    <div class="form-group full-width">
+                        <label class="form-label">PROJECT TITLE</label>
+                        <input type="text" id="formTitle" class="form-input" placeholder="e.g. Automated CPR Machine" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">CATEGORY</label>
+                        <input type="text" id="formCategory" class="form-input" placeholder="e.g. MEDICAL AUTOMATION & MECHATRONICS" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">BADGE TAG</label>
+                        <input type="text" id="formBadge" class="form-input" placeholder="e.g. GIKI CAPSTONE • MECHATRONICS" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">TIMELINE</label>
+                        <input type="text" id="formTimeline" class="form-input" placeholder="e.g. September 2025 – May 2026">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">ROLE</label>
+                        <input type="text" id="formRole" class="form-input" placeholder="e.g. Lead Controls & Systems Engineer">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="form-label">THUMBNAIL IMAGE URL / PATH</label>
+                        <input type="text" id="formThumbnail" class="form-input" placeholder="e.g. https://images.unsplash.com/... or assets/project_cpr.jpg">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="form-label">LINKEDIN POST URL</label>
+                        <input type="url" id="formLinkedinUrl" class="form-input" placeholder="https://www.linkedin.com/posts/...">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="form-label">SHORT OVERVIEW & DESCRIPTION</label>
+                        <textarea id="formOverview" class="form-textarea" placeholder="Provide a concise summary of the project architecture and results..." required></textarea>
+                    </div>
+
+                    <!-- KEY METRICS HIGHLIGHTS -->
+                    <div class="form-group full-width">
+                        <label class="form-label">KEY METRICS (CARD HIGHLIGHTS)</label>
+                        <div class="metrics-grid">
+                            <div class="metric-box">
+                                <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted);">METRIC 1</span>
+                                <input type="text" id="metric1Val" class="form-input" placeholder="Val (e.g. 102–120)">
+                                <input type="text" id="metric1Label" class="form-input" placeholder="Label (e.g. COMPRESSIONS/MIN)">
+                            </div>
+                            <div class="metric-box">
+                                <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted);">METRIC 2</span>
+                                <input type="text" id="metric2Val" class="form-input" placeholder="Val (e.g. 45–53 mm)">
+                                <input type="text" id="metric2Label" class="form-input" placeholder="Label (e.g. DEPTH PRECISION)">
+                            </div>
+                            <div class="metric-box">
+                                <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted);">METRIC 3</span>
+                                <input type="text" id="metric3Val" class="form-input" placeholder="Val (e.g. PID)">
+                                <input type="text" id="metric3Label" class="form-input" placeholder="Label (e.g. CLOSED-LOOP FORCE)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="form-label">TECHNICAL SPECIFICATIONS (ONE PER LINE)</label>
+                        <textarea id="formSpecs" class="form-textarea" placeholder="Compression Rate: 102 / 111 / 120 ±2 cpm&#10;Duty Cycle: 50 ±5%&#10;Motor: High-Torque DC Geared Motor"></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="form-label">KEY SECTIONS / DELIVERABLES (ONE PER LINE)</label>
+                        <textarea id="formSections" class="form-textarea" placeholder="Dual-Actuation Mechanics: DC geared motor + stepper motor&#10;Closed-Loop Control: PID loop ensuring stroke stability"></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="form-label">TECH TAGS (COMMA SEPARATED)</label>
+                        <input type="text" id="formTags" class="form-input" placeholder="PID Control, Mechatronics, Biomedical, DC Motors, Embedded C">
+                    </div>
+
+                </div>
+
+                <div class="editor-footer">
+                    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);" id="saveStatusIndicator">
+                        <i class="ri-shield-check-line" style="color: var(--accent-green);"></i> Ready
+                    </span>
+                    <button type="submit" class="btn-admin btn-admin-primary" style="padding: 0.8rem 1.8rem; font-size: 0.9rem;">
+                        <i class="ri-save-3-line"></i> SAVE CHANGES
+                    </button>
+                </div>
+            </form>
+        </main>
+
+    </div>
+
+    <!-- TOAST ALERT -->
+    <div class="toast-admin" id="adminToast">
+        <i class="ri-checkbox-circle-fill" style="color: var(--accent-cyan);"></i>
+        <span id="toastMessage">Changes saved successfully!</span>
+    </div>
+
+    <!-- ADMIN LOGIC SCRIPT -->
+    <script>
+        // Default Fallback Projects Dataset
+        const defaultProjects = [
+            {
+                id: "cpr",
+                title: "Automated CPR Machine (Final Year Project)",
+                category: "MEDICAL AUTOMATION & MECHATRONICS",
+                badge: "GIKI CAPSTONE • MECHATRONICS",
+                thumbnail: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
+                timeline: "September 2025 – May 2026",
+                role: "Lead Controls & Systems Engineer",
+                linkedinUrl: "https://www.linkedin.com/posts/shaheer-tahir-rao-b22246266_electricalengineering-biomedicalengineering-activity-7467236652172677120-UZhm",
+                overview: "Benchmarked to Stryker LUCAS 3, this system delivers continuous, high-precision chest compressions with dual-actuation force & height control, integrated real-time vitals monitoring, and telemetry logging.",
+                metrics: [
+                    { val: "102–120", label: "COMPRESSIONS / MIN" },
+                    { val: "45–53 mm", label: "DEPTH PRECISION" },
+                    { val: "PID", label: "CLOSED-LOOP FORCE" }
+                ],
+                specifications: [
+                    { key: "Compression Rate", val: "102 / 111 / 120 ±2 cpm" },
+                    { key: "Compression Depth", val: "45–53 ±2 mm" },
+                    { key: "Duty Cycle", val: "50 ±5%" }
+                ],
+                sections: [
+                    "Dual-Actuation Mechanics: DC geared motor for precise torque/depth control + stepper motor for automatic chest height adjustment.",
+                    "Closed-Loop Control: PID loop ensuring stroke stability regardless of chest impedance variations."
+                ],
+                tags: ["PID Control", "Mechatronics", "Biomedical", "DC Motors", "Embedded C"]
+            }
+        ];
+
+        let projectsData = [];
+        let currentEditId = null;
+
+        // Initialize CMS Data
+        async function initCMS() {
+            // Check passcode session
+            if (sessionStorage.getItem('rao_admin_authenticated') === 'true') {
+                document.getElementById('passcodeModal').style.display = 'none';
+            }
+
+            // Load projects from localStorage or data/projects.json
+            const localData = localStorage.getItem('rao_portfolio_projects');
+            if (localData) {
+                try {
+                    projectsData = JSON.parse(localData);
+                } catch (e) {
+                    console.error("Failed to parse local projects", e);
+                }
+            }
+
+            if (!projectsData || projectsData.length === 0) {
+                try {
+                    const res = await fetch('data/projects.json');
+                    projectsData = await res.json();
+                } catch (err) {
+                    console.warn("Using default fallback dataset", err);
+                    projectsData = [...defaultProjects];
+                }
+            }
+
+            renderProjectList();
+            if (projectsData.length > 0) {
+                selectProject(projectsData[0].id);
+            }
+        }
+
+        // Render Sidebar List
+        function renderProjectList() {
+            const listEl = document.getElementById('projectList');
+            document.getElementById('projectCount').textContent = projectsData.length;
+            listEl.innerHTML = '';
+
+            projectsData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = `project-item ${item.id === currentEditId ? 'active' : ''}`;
+                div.onclick = () => selectProject(item.id);
+
+                div.innerHTML = `
+                    <img src="${item.thumbnail || 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=200&q=80'}" class="project-item-thumb">
+                    <div class="project-item-info">
+                        <div class="project-item-title">${item.title}</div>
+                        <span class="project-item-badge">${item.badge || item.category}</span>
+                    </div>
+                    <div class="project-item-actions">
+                        <button class="btn-icon" title="Move Up" onclick="event.stopPropagation(); moveProject(${index}, -1)">
+                            <i class="ri-arrow-up-s-line"></i>
+                        </button>
+                        <button class="btn-icon" title="Move Down" onclick="event.stopPropagation(); moveProject(${index}, 1)">
+                            <i class="ri-arrow-down-s-line"></i>
+                        </button>
+                    </div>
+                `;
+                listEl.appendChild(div);
+            });
+        }
+
+        // Select Project into Editor Form
+        function selectProject(id) {
+            currentEditId = id;
+            const item = projectsData.find(p => p.id === id);
+            if (!item) return;
+
+            document.getElementById('editorHeaderTitle').textContent = `Edit: ${item.title}`;
+            document.getElementById('editorProjectIdTag').textContent = `ID: ${item.id}`;
+            document.getElementById('formProjectId').value = item.id;
+            document.getElementById('formTitle').value = item.title || '';
+            document.getElementById('formCategory').value = item.category || '';
+            document.getElementById('formBadge').value = item.badge || '';
+            document.getElementById('formTimeline').value = item.timeline || '';
+            document.getElementById('formRole').value = item.role || '';
+            document.getElementById('formThumbnail').value = item.thumbnail || '';
+            document.getElementById('formLinkedinUrl').value = item.linkedinUrl || '';
+            document.getElementById('formOverview').value = item.overview || '';
+
+            // Metrics
+            const m = item.metrics || [];
+            document.getElementById('metric1Val').value = m[0]?.val || '';
+            document.getElementById('metric1Label').value = m[0]?.label || '';
+            document.getElementById('metric2Val').value = m[1]?.val || '';
+            document.getElementById('metric2Label').value = m[1]?.label || '';
+            document.getElementById('metric3Val').value = m[2]?.val || '';
+            document.getElementById('metric3Label').value = m[2]?.label || '';
+
+            // Specs
+            const specs = item.specifications || [];
+            document.getElementById('formSpecs').value = specs.map(s => `${s.key}: ${s.val}`).join('\n');
+
+            // Sections / Deliverables
+            const sections = item.sections || [];
+            document.getElementById('formSections').value = Array.isArray(sections) ? sections.join('\n') : '';
+
+            // Tags
+            const tags = item.tags || [];
+            document.getElementById('formTags').value = Array.isArray(tags) ? tags.join(', ') : '';
+
+            renderProjectList();
+        }
+
+        // Form Submit Handler (Save Project)
+        document.getElementById('projectForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const id = document.getElementById('formProjectId').value;
+            let itemIndex = projectsData.findIndex(p => p.id === id);
+
+            const updatedProject = {
+                id: id || 'proj_' + Date.now(),
+                title: document.getElementById('formTitle').value,
+                category: document.getElementById('formCategory').value,
+                badge: document.getElementById('formBadge').value,
+                timeline: document.getElementById('formTimeline').value,
+                role: document.getElementById('formRole').value,
+                thumbnail: document.getElementById('formThumbnail').value,
+                linkedinUrl: document.getElementById('formLinkedinUrl').value,
+                overview: document.getElementById('formOverview').value,
+                metrics: [
+                    { val: document.getElementById('metric1Val').value, label: document.getElementById('metric1Label').value },
+                    { val: document.getElementById('metric2Val').value, label: document.getElementById('metric2Label').value },
+                    { val: document.getElementById('metric3Val').value, label: document.getElementById('metric3Label').value }
+                ].filter(m => m.val || m.label),
+                specifications: document.getElementById('formSpecs').value.split('\n').filter(l => l.trim()).map(line => {
+                    const parts = line.split(':');
+                    return { key: parts[0]?.trim() || 'Spec', val: parts.slice(1).join(':').trim() || '' };
+                }),
+                sections: document.getElementById('formSections').value.split('\n').filter(l => l.trim()),
+                tags: document.getElementById('formTags').value.split(',').map(t => t.trim()).filter(Boolean)
+            };
+
+            if (itemIndex > -1) {
+                projectsData[itemIndex] = updatedProject;
+            } else {
+                projectsData.push(updatedProject);
+            }
+
+            saveToLocalStorage();
+            renderProjectList();
+            showToast("Project saved! Live site updated in browser.");
+        });
+
+        // Add New Project
+        document.getElementById('addNewProjectBtn').onclick = () => {
+            const newId = 'proj_' + Date.now();
+            const newProj = {
+                id: newId,
+                title: "New Automation Project",
+                category: "INDUSTRIAL AUTOMATION",
+                badge: "NEW PROJECT",
+                thumbnail: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+                overview: "Short description of the new engineering project...",
+                metrics: [{ val: "100%", label: "EFFICIENCY" }],
+                specifications: [{ key: "System Type", val: "SCADA / PLC" }],
+                sections: ["Key feature description..."],
+                tags: ["Automation", "SCADA"]
+            };
+
+            projectsData.unshift(newProj);
+            saveToLocalStorage();
+            selectProject(newId);
+            showToast("New project created! Edit fields below.");
+        };
+
+        // Delete Project
+        document.getElementById('deleteProjectBtn').onclick = () => {
+            if (!currentEditId) return;
+            const item = projectsData.find(p => p.id === currentEditId);
+            if (confirm(`Are you sure you want to delete "${item?.title || 'this project'}"?`)) {
+                projectsData = projectsData.filter(p => p.id !== currentEditId);
+                saveToLocalStorage();
+                if (projectsData.length > 0) {
+                    selectProject(projectsData[0].id);
+                } else {
+                    renderProjectList();
+                }
+                showToast("Project deleted successfully.");
+            }
+        };
+
+        // Move Project Up / Down
+        function moveProject(index, direction) {
+            const newIndex = index + direction;
+            if (newIndex < 0 || newIndex >= projectsData.length) return;
+            const temp = projectsData[index];
+            projectsData[index] = projectsData[newIndex];
+            projectsData[newIndex] = temp;
+            saveToLocalStorage();
+            renderProjectList();
+        }
+
+        // Export JSON
+        document.getElementById('exportJsonBtn').onclick = () => {
+            const jsonStr = JSON.stringify(projectsData, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'projects.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast("Downloaded projects.json! Replace data/projects.json in repo.");
+        };
+
+        // Reset to Defaults
+        document.getElementById('resetDefaultsBtn').onclick = () => {
+            if (confirm("Reset all project modifications to default dataset?")) {
+                localStorage.removeItem('rao_portfolio_projects');
+                initCMS();
+                showToast("Reset to default project dataset.");
+            }
+        };
+
+        // Save to LocalStorage
+        function saveToLocalStorage() {
+            localStorage.setItem('rao_portfolio_projects', JSON.stringify(projectsData));
+        }
+
+        // Toast Notification
+        function showToast(msg) {
+            const toast = document.getElementById('adminToast');
+            document.getElementById('toastMessage').textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+
+        // Passcode Handler
+        document.getElementById('passcodeForm').onsubmit = (e) => {
+            e.preventDefault();
+            const val = document.getElementById('passcodeInput').value;
+            if (val === 'rao2026' || val === 'admin') {
+                sessionStorage.setItem('rao_admin_authenticated', 'true');
+                document.getElementById('passcodeModal').style.display = 'none';
+                showToast("CMS Unlocked! Welcome Shaheer Tahir Rao.");
+            } else {
+                alert("Incorrect passcode! Try: rao2026");
+            }
+        };
+
+        // On Load
+        window.addEventListener('DOMContentLoaded', initCMS);
+    </script>
+</body>
+</html>
