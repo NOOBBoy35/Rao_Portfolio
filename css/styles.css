@@ -711,6 +711,10 @@ body.intro-active {
 /* PROFILE / DESIGN NOTE SECTION */
 .profile-section {
     background-color: #070c16;
+    background-image: url('../assets/profile_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     position: relative;
     border-bottom: 1px solid var(--border-color);
 }
@@ -753,59 +757,231 @@ body.intro-active {
 }
 
 .design-note-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    background: linear-gradient(135deg, rgba(10, 17, 30, 0.85) 0%, rgba(6, 11, 20, 0.92) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 240, 255, 0.25);
     border-left: 4px solid var(--accent-cyan);
-    border-radius: 4px;
-    padding: 2.2rem;
+    border-radius: 8px;
+    padding: 2.5rem;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 240, 255, 0.08);
+    overflow: hidden;
+    transition: var(--transition-fast);
+}
+
+.design-note-card:hover {
+    border-color: rgba(0, 240, 255, 0.45);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 45px rgba(0, 240, 255, 0.15);
+}
+
+/* HUD Corner Accents */
+.hud-corner {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--accent-cyan);
+    opacity: 0.7;
+}
+
+.hud-corner.top-left {
+    top: 8px;
+    left: 8px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.hud-corner.top-right {
+    top: 8px;
+    right: 8px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.card-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
 }
 
 .card-meta {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--accent-cyan);
     letter-spacing: 0.12em;
-    display: block;
-    margin-bottom: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--accent-green);
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 0.25rem 0.65rem;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+}
+
+.pulse-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-green);
+    animation: pulse 2s infinite;
+}
+
+.quote-container {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.quote-watermark {
+    position: absolute;
+    top: -30px;
+    left: -15px;
+    font-family: var(--font-heading);
+    font-size: 6rem;
+    line-height: 1;
+    color: rgba(0, 240, 255, 0.06);
+    pointer-events: none;
+    user-select: none;
 }
 
 .design-note-title {
     font-family: var(--font-heading);
-    font-size: 1.7rem;
-    font-weight: 600;
-    line-height: 1.4;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.45;
     color: var(--text-primary);
-    margin-bottom: 1.2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.highlight-cyan {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+}
+
+.highlight-blue {
+    color: var(--text-blue);
+}
+
+.highlight-gold {
+    color: #ffd700;
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
 }
 
 .design-note-body {
     color: var(--text-secondary);
-    font-size: 1rem;
+    font-size: 0.98rem;
     line-height: 1.7;
+    margin-bottom: 1.8rem;
+}
+
+/* Specialization Pills */
+.specialization-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
     margin-bottom: 2rem;
 }
 
+.spec-pill {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-cyan);
+    background: rgba(0, 240, 255, 0.06);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: var(--transition-fast);
+}
+
+.spec-pill:hover {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: var(--accent-cyan);
+    transform: translateY(-1px);
+}
+
+/* Education Cards Grid */
 .education-strip {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border-color);
+    gap: 1.25rem;
+    padding-top: 1.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .edu-badge {
-    background: var(--bg-secondary);
-    padding: 1rem 1.2rem;
-    border-radius: 4px;
-    border: 1px solid var(--border-color);
+    background: rgba(10, 16, 28, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 1.2rem;
+    transition: var(--transition-fast);
+}
+
+.edu-badge:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: rgba(12, 20, 35, 0.85);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.edu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
 }
 
 .edu-inst {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.edu-tag {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 0.15rem 0.45rem;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+}
+
+.edu-degree {
     font-family: var(--font-heading);
+    font-size: 0.95rem;
     font-weight: 600;
-    font-size: 1.1rem;
     color: var(--text-primary);
-    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.edu-meta {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
 }
 
 .edu-degree {
