@@ -711,18 +711,31 @@ body.intro-active {
 /* PROFILE / DESIGN NOTE SECTION */
 .profile-section {
     background-color: #070c16;
-    background-image: url('../assets/profile_bg.png');
+    background-image: linear-gradient(180deg, rgba(7, 12, 22, 0.15) 0%, rgba(7, 12, 22, 0.3) 70%, #070c16 100%), url('../assets/profile_bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid rgba(0, 240, 255, 0.12);
 }
 
 .experience-section {
-    background-color: #0b111d;
+    background-color: #070c16;
+    background-image: linear-gradient(180deg, 
+        #070c16 0%, 
+        rgba(7, 12, 22, 0.6) 12%, 
+        rgba(6, 11, 19, 0.2) 30%, 
+        rgba(6, 11, 19, 0.2) 70%, 
+        rgba(7, 12, 22, 0.6) 88%, 
+        #070c16 100%
+    ), url('../assets/experience_bg.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
     position: relative;
-    border-bottom: 1px solid var(--border-color);
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.12);
 }
 
 .projects-section {
@@ -1029,16 +1042,20 @@ body.intro-active {
 }
 
 .timeline-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
+    background: rgba(10, 16, 28, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(0, 240, 255, 0.22);
+    border-radius: 8px;
     padding: 2rem;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 240, 255, 0.05);
     transition: var(--transition-normal);
 }
 
 .timeline-card:hover {
-    border-color: rgba(0, 240, 255, 0.4);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 240, 255, 0.55);
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.75), 0 0 30px rgba(0, 240, 255, 0.15);
+    transform: translateY(-2px);
 }
 
 .card-header-row {
