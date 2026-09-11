@@ -165,17 +165,31 @@
         gap: 1rem;
     }
 
-    .card-header-row {
+    .exp-card-header {
         flex-direction: column;
-        gap: 0.8rem;
+        gap: 1rem;
     }
 
-    .time-location {
-        text-align: left;
+    .time-location-box {
+        align-items: flex-start;
+    }
+
+    .exp-modules-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .exp-card-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-linkedin-hud {
+        justify-content: center;
+        width: 100%;
     }
 
     .org-name {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
     }
 
     /* Projects Grid Mobile */
