@@ -503,11 +503,22 @@ const TRACE_PATHS = [
     'M10,20 L70,20 L70,8 L130,8 L130,32 L190,32 L190,20 L290,20'
 ];
 
+/* Domain icon per project. Anything not listed falls back to the generic
+   circuit glyph, so projects added through admin.html still render. */
+const PROJECT_ICONS = {
+    cpr:       'ri-heart-pulse-line',
+    lvdt:      'ri-pulse-line',
+    welder:    'ri-flashlight-line',
+    regen:     'ri-charging-pile-line',
+    amplifier: 'ri-volume-up-line',
+    plc:       'ri-settings-5-line'
+};
+
 function traceSvg(index) {
     const d = TRACE_PATHS[index % TRACE_PATHS.length];
     return `<svg class="mini-diagram-svg" viewBox="0 0 300 40" aria-hidden="true">
-            <path d="${d}" stroke="#00f0ff" stroke-width="1.5" fill="none"/>
-        </svg>`;
+                <path d="${d}" stroke="#00f0ff" stroke-width="1.5" fill="none"/>
+            </svg>`;
 }
 
 /* Dynamic Projects Rendering from LocalStorage / JSON Dataset */
@@ -547,19 +558,38 @@ async function initDynamicProjects() {
         const tagsHtml = (p.tags || [])
             .map(t => `<span class="prj-tag">${esc(t)}</span>`).join('');
 
+        const icon = PROJECT_ICONS[p.id] || 'ri-cpu-line';
+        const ref  = String(i + 1).padStart(2, '0');
+
         return `
             <article class="project-card" data-project="${esc(p.id)}" tabindex="0" role="button"
                      aria-label="View details for ${esc(p.title)}">
-                <div class="prj-top-diagram">${traceSvg(i)}</div>
+                <span class="prj-hud tl"></span><span class="prj-hud tr"></span>
+                <span class="prj-hud bl"></span><span class="prj-hud br"></span>
+
+                <div class="prj-top-diagram">
+                    <span class="prj-ref">REF // PRJ-${ref}</span>
+                    ${traceSvg(i)}
+                </div>
+
                 <div class="prj-content">
-                    <span class="prj-badge">${esc(p.badge || p.category)}</span>
+                    <div class="prj-ident">
+                        <div class="prj-icon-badge"><i class="${icon}" aria-hidden="true"></i></div>
+                        <span class="prj-badge">
+                            <span class="status-pulse"></span>${esc(p.badge || p.category)}
+                        </span>
+                    </div>
+
                     <h3 class="prj-title">${esc(p.title)}</h3>
+                    <div class="prj-rule"></div>
                     <p class="prj-desc">${esc(p.overview)}</p>
+
                     ${metricsHtml ? `<div class="prj-metrics">${metricsHtml}</div>` : ''}
                     <div class="prj-tags">${tagsHtml}</div>
+
                     <div class="prj-card-actions">
                         <button class="btn-prj-details" type="button" tabindex="-1">
-                            <span>VIEW DETAILS &amp; SPECS</span>
+                            <span>ACCESS FULL DOSSIER</span>
                             <i class="ri-arrow-right-up-line" aria-hidden="true"></i>
                         </button>
                     </div>
