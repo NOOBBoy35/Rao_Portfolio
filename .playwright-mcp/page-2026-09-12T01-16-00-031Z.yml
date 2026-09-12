@@ -1,0 +1,565 @@
+- generic [active] [ref=f17e1]:
+  - generic [ref=f17e5]:
+    - generic [ref=f17e6]:
+      - generic [ref=f17e7]: 
+      - generic [ref=f17e8]: SHAHEER TAHIR RAO // PORTFOLIO INTRO
+    - button "SKIP INTRO " [ref=f17e9] [cursor=pointer]:
+      - generic [ref=f17e10]: SKIP INTRO
+      - generic [ref=f17e11]: 
+  - banner [ref=f17e12]:
+    - generic [ref=f17e13]:
+      - link " Shaheer Tahir Rao" [ref=f17e14] [cursor=pointer]:
+        - /url: "#hero"
+        - generic [ref=f17e15]: 
+        - generic [ref=f17e16]: Shaheer Tahir Rao
+      - navigation [ref=f17e17]:
+        - link "PROFILE" [ref=f17e18] [cursor=pointer]:
+          - /url: "#profile"
+        - link "EXPERIENCE" [ref=f17e19] [cursor=pointer]:
+          - /url: "#experience"
+        - link "PROJECTS" [ref=f17e20] [cursor=pointer]:
+          - /url: "#projects"
+        - link "SKILLS" [ref=f17e21] [cursor=pointer]:
+          - /url: "#skills"
+        - link "CONTACT" [ref=f17e22] [cursor=pointer]:
+          - /url: "#contact"
+      - generic [ref=f17e23]:
+        - link " DOWNLOAD CV" [ref=f17e24] [cursor=pointer]:
+          - /url: Resume_539_upd.pdf
+          - generic [ref=f17e25]: 
+          - generic [ref=f17e26]: DOWNLOAD CV
+        - generic [ref=f17e27]: PORTFOLIO ONLINE
+    - text: 
+  - main [ref=f17e30]:
+    - generic [ref=f17e32]:
+      - generic [ref=f17e33]:
+        - generic [ref=f17e34]:
+          - generic [ref=f17e35]: PORTFOLIO / REV.01
+          - generic [ref=f17e36]: "|"
+          - generic [ref=f17e37]:
+            - generic [ref=f17e38]: 
+            - text: Lahore, PK
+        - heading "Shaheer Tahir Rao" [level=1] [ref=f17e39]
+        - heading "Circuits built to perform. Automation engineered to scale." [level=2] [ref=f17e40]
+        - paragraph [ref=f17e41]:
+          - text: PEC-Registered Electrical Engineer specializing in power systems, industrial energy infrastructure, SCADA systems, switchgear protection, and embedded control. Experienced through internships at
+          - strong [ref=f17e42]: NESPAK
+          - text: and
+          - strong [ref=f17e43]: Pak Elektron Limited (PEL)
+          - text: .
+        - generic [ref=f17e44]:
+          - generic [ref=f17e45]:
+            - generic [ref=f17e46]: "00"
+            - generic [ref=f17e47]: Projects Shipped
+          - generic [ref=f17e48]:
+            - generic [ref=f17e49]: "00"
+            - generic [ref=f17e50]: Industry Internships
+          - generic [ref=f17e51]:
+            - generic [ref=f17e52]: "00"
+            - generic [ref=f17e53]: Technical Skills
+          - generic [ref=f17e54]:
+            - generic [ref=f17e55]: 8820MW
+            - generic [ref=f17e56]: Hydropower Reviewed
+        - generic [ref=f17e57]:
+          - link "VIEW SELECTED WORK " [ref=f17e58] [cursor=pointer]:
+            - /url: "#projects"
+            - generic [ref=f17e59]: VIEW SELECTED WORK
+            - generic [ref=f17e60]: 
+          - link " DOWNLOAD CV" [ref=f17e61] [cursor=pointer]:
+            - /url: Resume_539_upd.pdf
+            - generic [ref=f17e62]: 
+            - generic [ref=f17e63]: DOWNLOAD CV
+          - link "WORK WITH ME " [ref=f17e64] [cursor=pointer]:
+            - /url: "#contact"
+            - generic [ref=f17e65]: WORK WITH ME
+            - generic [ref=f17e66]: 
+      - generic [ref=f17e68]:
+        - img "Shaheer Tahir Rao - PEC RAO-SCADA 2026 System Architecture & Automation Card" [ref=f17e69]
+        - link "06 PROJECTS" [ref=f17e70] [cursor=pointer]:
+          - /url: "#projects"
+        - link "15 SKILLS" [ref=f17e71] [cursor=pointer]:
+          - /url: "#skills"
+        - link "02 INTERNSHIPS" [ref=f17e72] [cursor=pointer]:
+          - /url: "#experience"
+    - generic [ref=f17e83]:
+      - generic [ref=f17e84]:
+        - generic [ref=f17e85]: INPUT / PROFILE
+        - generic [ref=f17e87]:
+          - generic [ref=f17e88]:
+            - generic [ref=f17e89]: GIKI
+            - generic [ref=f17e90]: BS Electrical Engineering
+          - generic [ref=f17e91]:
+            - generic [ref=f17e92]: PEC
+            - generic [ref=f17e93]: Registered Engineer
+          - generic [ref=f17e94]:
+            - generic [ref=f17e95]: Lahore, PK
+            - generic [ref=f17e96]: Open to Relocation
+      - generic [ref=f17e98]:
+        - generic [ref=f17e101]:
+          - generic [ref=f17e102]:
+            - generic [ref=f17e103]: 
+            - text: SYSTEM ARCHITECTURE PHILOSOPHY
+          - generic [ref=f17e104]: LIVE SIGNAL TRACE
+        - generic [ref=f17e106]:
+          - generic: “
+          - 'heading "I design electrical systems by following the signal all the way through: from requirement into schematic, across the circuit board & switchgear panel, and onto the live SCADA/PLC monitor." [level=3] [ref=f17e107]'
+        - paragraph [ref=f17e108]:
+          - text: Graduated from
+          - strong [ref=f17e109]: Ghulam Ishaq Khan Institute of Engineering Sciences & Technology (GIKI)
+          - text: with a specialization in Power Systems, Control Systems, Electrical Infrastructure, and Embedded Systems. Passionate about industrial automation, high-voltage protection schemes, electric vehicle power electronics, and real-time SCADA telemetry.
+        - generic [ref=f17e110]:
+          - generic [ref=f17e111]:
+            - generic [ref=f17e112]: 
+            - text: POWER SYSTEMS & SWITCHGEAR
+          - generic [ref=f17e113]:
+            - generic [ref=f17e114]: 
+            - text: SCADA & REAL-TIME TELEMETRY
+          - generic [ref=f17e115]:
+            - generic [ref=f17e116]: 
+            - text: EMBEDDED CONTROL & PID
+          - generic [ref=f17e117]:
+            - generic [ref=f17e118]: 
+            - text: EV POWER ELECTRONICS
+        - generic [ref=f17e119]:
+          - generic [ref=f17e120]:
+            - generic [ref=f17e121]:
+              - generic [ref=f17e122]:
+                - generic [ref=f17e123]: 
+                - text: Ghulam Ishaq Khan Institute (GIKI)
+              - generic [ref=f17e124]: BS ENGINEERING
+            - generic [ref=f17e125]: BS Electrical Engineering (Power Systems)
+            - generic [ref=f17e126]: Sep 2022 – May 2026 • Top Engineering Institute
+          - generic [ref=f17e127]:
+            - generic [ref=f17e128]:
+              - generic [ref=f17e129]:
+                - generic [ref=f17e130]: 
+                - text: Government College University (GCU)
+              - generic [ref=f17e131]: PRE-ENGINEERING
+            - generic [ref=f17e132]: FSc Pre-Engineering • Lahore
+            - generic [ref=f17e133]: Aug 2019 – Aug 2021 • Merit Distinction
+    - generic [ref=f17e135]:
+      - generic [ref=f17e136]:
+        - generic [ref=f17e137]: 01 / PROFESSIONAL EXPERIENCE
+        - heading "Industry Exposure & Internships" [level=2] [ref=f17e138]
+      - generic [ref=f17e139]:
+        - generic [ref=f17e144]:
+          - generic [ref=f17e149]:
+            - generic [ref=f17e150]:
+              - generic [ref=f17e151]: 
+              - generic [ref=f17e153]:
+                - generic [ref=f17e154]:
+                  - generic [ref=f17e155]: INTERNSHIP VERIFIED
+                  - generic [ref=f17e157]: REF // NESPAK-SCADA-2025
+                - heading "National Engineering Services Pakistan (PVT) Ltd" [level=3] [ref=f17e158]
+                - generic [ref=f17e159]:
+                  - generic [ref=f17e160]: 
+                  - text: Technical Intern — SCADA & Telecom Division
+            - generic [ref=f17e161]:
+              - generic [ref=f17e162]:
+                - generic [ref=f17e163]: 
+                - text: July 2025 – Aug 2025
+              - generic [ref=f17e164]:
+                - generic [ref=f17e165]: 
+                - text: Lahore / Field
+          - generic [ref=f17e166]:
+            - generic [ref=f17e167]:
+              - generic [ref=f17e168]:
+                - generic [ref=f17e169]: 01 // HYDROPOWER SCADA
+                - generic [ref=f17e170]: 
+              - paragraph [ref=f17e171]:
+                - text: Reviewed SCADA/telecom design submittals for WAPDA hydropower projects, including
+                - strong [ref=f17e172]: Dasu (4320 MW)
+                - text: and
+                - strong [ref=f17e173]: Diamer-Bhasha (4500 MW)
+                - text: ", preparing technical review summaries."
+            - generic [ref=f17e174]:
+              - generic [ref=f17e175]:
+                - generic [ref=f17e176]: 02 // CAD & ROUTING REDLINES
+                - generic [ref=f17e177]: 
+              - paragraph [ref=f17e178]: Verified ELV/ICT AutoCAD drawings and prepared coordination redlines for layouts, cable trays, and communication routing.
+            - generic [ref=f17e179]:
+              - generic [ref=f17e180]:
+                - generic [ref=f17e181]: 03 // SMART INFRASTRUCTURE
+                - generic [ref=f17e182]: 
+              - paragraph [ref=f17e183]: Assisted in Smart Infrastructure Setup for a 200-bed Gynaecology Ward in Islamabad, integrating SCADA and telecom systems for hospital operations.
+            - generic [ref=f17e184]:
+              - generic [ref=f17e185]:
+                - generic [ref=f17e186]: 04 // WAPDA REGULATIONS
+                - generic [ref=f17e187]: 
+              - paragraph [ref=f17e188]: Reviewed WAPDA Society Development Regulations, Consultant By-Laws, and interpreted single-line AutoCAD drawings.
+          - generic [ref=f17e189]:
+            - generic [ref=f17e190]:
+              - generic [ref=f17e191]:
+                - generic [ref=f17e192]: 
+                - text: SCADA
+              - generic [ref=f17e193]:
+                - generic [ref=f17e194]: 
+                - text: Telecom Submittals
+              - generic [ref=f17e195]:
+                - generic [ref=f17e196]: 
+                - text: AutoCAD Redlines
+              - generic [ref=f17e197]:
+                - generic [ref=f17e198]: 
+                - text: WAPDA Hydropower
+              - generic [ref=f17e199]:
+                - generic [ref=f17e200]: 
+                - text: ELV/ICT
+            - link "VERIFY ON LINKEDIN " [ref=f17e201] [cursor=pointer]:
+              - /url: https://www.linkedin.com/posts/shaheer-tahir-rao-b22246266_internshipexperience-scada-telecommunications-activity-7372534615095472128-B8vz
+              - generic [ref=f17e202]: VERIFY ON LINKEDIN
+              - generic [ref=f17e203]: 
+        - generic [ref=f17e208]:
+          - generic [ref=f17e213]:
+            - generic [ref=f17e214]:
+              - generic [ref=f17e215]: 
+              - generic [ref=f17e217]:
+                - generic [ref=f17e218]:
+                  - generic [ref=f17e219]: QA/QC CERTIFIED
+                  - generic [ref=f17e221]: REF // PEL-SWITCHGEAR-2024
+                - heading "Pak Elektron Limited (PEL)" [level=3] [ref=f17e222]
+                - generic [ref=f17e223]: QA / QC Intern — Switchgear Division
+            - generic [ref=f17e224]:
+              - generic [ref=f17e225]:
+                - generic [ref=f17e226]: 
+                - text: July 2024 – Aug 2024
+              - generic [ref=f17e227]:
+                - generic [ref=f17e228]: 
+                - text: Lahore, PK
+          - generic [ref=f17e229]:
+            - generic [ref=f17e230]:
+              - generic [ref=f17e231]:
+                - generic [ref=f17e232]: 01 // SCHEMATIC & RELAY AUDITS
+                - generic [ref=f17e233]: 
+              - paragraph [ref=f17e234]: Audited schematics and performed parameter checks for CT/VT, protection relays, mechanical/electrical interlocks, and earthing systems.
+            - generic [ref=f17e235]:
+              - generic [ref=f17e236]:
+                - generic [ref=f17e237]: 02 // SWITCHGEAR DRAFTING
+                - generic [ref=f17e238]: 
+              - paragraph [ref=f17e239]: Supported low & medium voltage switchgear drafting, verifying panel ratings (voltage/current) from physical nameplates and technical drawings.
+            - generic [ref=f17e240]:
+              - generic [ref=f17e241]:
+                - generic [ref=f17e242]: 03 // CAD DELIVERABLES
+                - generic [ref=f17e243]: 
+              - paragraph [ref=f17e244]:
+                - text: "Submitted 2 AutoCAD engineering deliverables:"
+                - strong [ref=f17e245]: Star–Delta Motor Control Scheme
+                - text: schematic and
+                - strong [ref=f17e246]: Single Line Diagram (SLD)
+                - text: panel protection layout.
+            - generic [ref=f17e247]:
+              - generic [ref=f17e248]:
+                - generic [ref=f17e249]: 04 // MOTOR CONTROL
+                - generic [ref=f17e250]: 
+              - paragraph [ref=f17e251]: Evaluated contactors, circuit breakers, and protection relays for heavy industrial motor control applications.
+          - generic [ref=f17e252]:
+            - generic [ref=f17e253]:
+              - generic [ref=f17e254]:
+                - generic [ref=f17e255]: 
+                - text: Switchgear
+              - generic [ref=f17e256]:
+                - generic [ref=f17e257]: 
+                - text: CT/VT Relays
+              - generic [ref=f17e258]:
+                - generic [ref=f17e259]: 
+                - text: Star-Delta Control
+              - generic [ref=f17e260]:
+                - generic [ref=f17e261]: 
+                - text: Single Line Diagram (SLD)
+              - generic [ref=f17e262]:
+                - generic [ref=f17e263]: 
+                - text: AutoCAD
+            - link "VERIFY ON LINKEDIN " [ref=f17e264] [cursor=pointer]:
+              - /url: https://www.linkedin.com/posts/shaheer-tahir-rao-b22246266_internship-pel-electricalengineering-activity-7352306243794825216-tpFt
+              - generic [ref=f17e265]: VERIFY ON LINKEDIN
+              - generic [ref=f17e266]: 
+    - generic [ref=f17e268]:
+      - generic [ref=f17e269]:
+        - generic [ref=f17e270]: 02 / TECHNICAL PROJECTS
+        - heading "Engineering Deliverables & Prototypes" [level=2] [ref=f17e271]
+      - generic [ref=f17e272]:
+        - button "View details for Automated CPR Machine (Final Year Project)" [ref=f17e273] [cursor=pointer]:
+          - generic [ref=f17e277]:
+            - generic [ref=f17e278]: GIKI CAPSTONE • MECHATRONICS
+            - heading "Automated CPR Machine (Final Year Project)" [level=3] [ref=f17e279]
+            - paragraph [ref=f17e280]: Benchmarked to Stryker LUCAS 3, this system delivers continuous, high-precision chest compressions with dual-actuation force & height control, integrated real-time vitals monitoring, and telemetry logging.
+            - generic [ref=f17e281]:
+              - generic [ref=f17e282]:
+                - generic [ref=f17e283]: 102–120
+                - generic [ref=f17e284]: COMPRESSIONS / MIN
+              - generic [ref=f17e285]:
+                - generic [ref=f17e286]: 45–53 mm
+                - generic [ref=f17e287]: DEPTH PRECISION
+              - generic [ref=f17e288]:
+                - generic [ref=f17e289]: PID
+                - generic [ref=f17e290]: CLOSED-LOOP FORCE
+            - generic [ref=f17e291]:
+              - generic [ref=f17e292]: PID Control
+              - generic [ref=f17e293]: Mechatronics
+              - generic [ref=f17e294]: Biomedical
+              - generic [ref=f17e295]: DC Motors
+              - generic [ref=f17e296]: Embedded C
+            - button "VIEW DETAILS & SPECS" [ref=f17e298]:
+              - generic [aria-hidden] [ref=f17e300]: 
+        - button "View details for Linear Variable Differential Transformer (LVDT)" [ref=f17e301] [cursor=pointer]:
+          - generic [ref=f17e305]:
+            - generic [ref=f17e306]: GIKI LAB • INSTRUMENTATION
+            - heading "Linear Variable Differential Transformer (LVDT)" [level=3] [ref=f17e307]
+            - paragraph [ref=f17e308]: Designed, wound, and calibrated a high-precision mini LVDT position transducer with 1 primary coil and 2 matched secondary coils connected in series-differential mode.
+            - generic [ref=f17e309]:
+              - generic [ref=f17e310]:
+                - generic [ref=f17e311]: ±45.9 mA
+                - generic [ref=f17e312]: NULL CURRENT
+              - generic [ref=f17e313]:
+                - generic [ref=f17e314]: 28 AWG
+                - generic [ref=f17e315]: COPPER WINDING
+              - generic [ref=f17e316]:
+                - generic [ref=f17e317]: COMSOL
+                - generic [ref=f17e318]: EM FIELD VERIFIED
+            - generic [ref=f17e319]:
+              - generic [ref=f17e320]: Electromagnetics
+              - generic [ref=f17e321]: LVDT
+              - generic [ref=f17e322]: COMSOL
+              - generic [ref=f17e323]: Sensors
+              - generic [ref=f17e324]: Signal Conditioning
+            - button "VIEW DETAILS & SPECS" [ref=f17e326]:
+              - generic [aria-hidden] [ref=f17e328]: 
+        - button "View details for DIY Resistance Spot Welder" [ref=f17e329] [cursor=pointer]:
+          - generic [ref=f17e333]:
+            - generic [ref=f17e334]: POWER LAB • PROTOTYPE
+            - heading "DIY Resistance Spot Welder" [level=3] [ref=f17e335]
+            - paragraph [ref=f17e336]: Constructed a high-current resistance spot welder with precise digital pulse timing and foot-switch actuation using the NY-D01 controller.
+            - generic [ref=f17e337]:
+              - generic [ref=f17e338]:
+                - generic [ref=f17e339]: 20 ms
+                - generic [ref=f17e340]: PULSE RESOLUTION
+              - generic [ref=f17e341]:
+                - generic [ref=f17e342]: 40A SCR
+                - generic [ref=f17e343]: THYRISTOR RATING
+              - generic [ref=f17e344]:
+                - generic [ref=f17e345]: NY-D01
+                - generic [ref=f17e346]: DIGITAL CONTROL
+            - generic [ref=f17e347]:
+              - generic [ref=f17e348]: Power Electronics
+              - generic [ref=f17e349]: SCR Control
+              - generic [ref=f17e350]: AC Pulse
+              - generic [ref=f17e351]: High Current
+              - generic [ref=f17e352]: AutoCAD
+            - button "VIEW DETAILS & SPECS" [ref=f17e354]:
+              - generic [aria-hidden] [ref=f17e356]: 
+        - button "View details for Regenerative Braking Controller" [ref=f17e357] [cursor=pointer]:
+          - generic [ref=f17e361]:
+            - generic [ref=f17e362]: GIKI SIMULATION • EV POWER
+            - heading "Regenerative Braking Controller" [level=3] [ref=f17e363]
+            - paragraph [ref=f17e364]: Developed a closed-loop power electronics control strategy for kinetic energy recovery during vehicle deceleration, channeling power back to battery storage while stabilizing DC bus voltage.
+            - generic [ref=f17e365]:
+              - generic [ref=f17e366]:
+                - generic [ref=f17e367]: Simulink
+                - generic [ref=f17e368]: CLOSED LOOP
+              - generic [ref=f17e369]:
+                - generic [ref=f17e370]: CAN Bus
+                - generic [ref=f17e371]: TELEMETRY
+              - generic [ref=f17e372]:
+                - generic [ref=f17e373]: Bi-Direct
+                - generic [ref=f17e374]: DC-DC CONVERTER
+            - generic [ref=f17e375]:
+              - generic [ref=f17e376]: MATLAB
+              - generic [ref=f17e377]: Simulink
+              - generic [ref=f17e378]: EV Controls
+              - generic [ref=f17e379]: CAN Bus
+              - generic [ref=f17e380]: Power Electronics
+            - button "VIEW DETAILS & SPECS" [ref=f17e382]:
+              - generic [aria-hidden] [ref=f17e384]: 
+        - button "View details for 2-Stage BJT Microphone Amplifier" [ref=f17e385] [cursor=pointer]:
+          - generic [ref=f17e389]:
+            - generic [ref=f17e390]: ANALOG LAB • AUDIO FREQ
+            - heading "2-Stage BJT Microphone Amplifier" [level=3] [ref=f17e391]
+            - paragraph [ref=f17e392]: Designed and built a 2-stage BJT audio amplifier featuring RC coupling between amplification stages and a high-efficiency push-pull driver stage.
+            - generic [ref=f17e393]:
+              - generic [ref=f17e394]:
+                - generic [ref=f17e395]: 12.65 Vrms
+                - generic [ref=f17e396]: PEAK VOLTAGE
+              - generic [ref=f17e397]:
+                - generic [ref=f17e398]: Class-AB
+                - generic [ref=f17e399]: PUSH-PULL DRIVER
+              - generic [ref=f17e400]:
+                - generic [ref=f17e401]: 4 W / 40 Ω
+                - generic [ref=f17e402]: SPEAKER LOAD
+            - generic [ref=f17e403]:
+              - generic [ref=f17e404]: Analog Electronics
+              - generic [ref=f17e405]: BJT Amplifiers
+              - generic [ref=f17e406]: LTspice
+              - generic [ref=f17e407]: Push-Pull Driver
+              - generic [ref=f17e408]: Audio Engineering
+            - button "VIEW DETAILS & SPECS" [ref=f17e410]:
+              - generic [aria-hidden] [ref=f17e412]: 
+        - button "View details for Industrial PLC & HMI Automation System" [ref=f17e413] [cursor=pointer]:
+          - generic [ref=f17e417]:
+            - generic [ref=f17e418]: INDUSTRIAL • AUTOMATION
+            - heading "Industrial PLC & HMI Automation System" [level=3] [ref=f17e419]
+            - paragraph [ref=f17e420]: Developed complete PLC ladder logic programs and HMI visualization layouts using Siemens TIA Portal for industrial automated lines and motor protection panels.
+            - generic [ref=f17e421]:
+              - generic [ref=f17e422]:
+                - generic [ref=f17e423]: TIA
+                - generic [ref=f17e424]: SIEMENS PORTAL
+              - generic [ref=f17e425]:
+                - generic [ref=f17e426]: 61131-3
+                - generic [ref=f17e427]: IEC STANDARD
+              - generic [ref=f17e428]:
+                - generic [ref=f17e429]: LADDER
+                - generic [ref=f17e430]: FBD LOGIC
+            - generic [ref=f17e431]:
+              - generic [ref=f17e432]: PLC
+              - generic [ref=f17e433]: HMI
+              - generic [ref=f17e434]: TIA Portal
+              - generic [ref=f17e435]: Ladder Logic
+              - generic [ref=f17e436]: Automation
+            - button "VIEW DETAILS & SPECS" [ref=f17e438]:
+              - generic [aria-hidden] [ref=f17e440]: 
+    - generic [ref=f17e442]:
+      - generic [ref=f17e443]:
+        - generic [ref=f17e444]: 03 / TECHNICAL TOOLKIT
+        - heading "Domains, Software & Programming" [level=2] [ref=f17e445]
+      - generic [ref=f17e446]:
+        - generic [ref=f17e447]:
+          - generic [ref=f17e448]:
+            - generic [ref=f17e449]: 
+            - heading "Industrial & Power" [level=3] [ref=f17e450]
+            - generic [ref=f17e451]: 05 MODULES
+          - list [ref=f17e452]:
+            - listitem [ref=f17e453]:
+              - generic [ref=f17e454]:
+                - generic [ref=f17e455]: PLC Programming (TIA Portal)
+                - generic [ref=f17e456]: 92%
+            - listitem [ref=f17e458]:
+              - generic [ref=f17e459]:
+                - generic [ref=f17e460]: HMI & SCADA Systems
+                - generic [ref=f17e461]: 90%
+            - listitem [ref=f17e463]:
+              - generic [ref=f17e464]:
+                - generic [ref=f17e465]: Switchgear & Protection (CT/VT)
+                - generic [ref=f17e466]: 88%
+            - listitem [ref=f17e468]:
+              - generic [ref=f17e469]:
+                - generic [ref=f17e470]: Single Line Diagrams (SLD)
+                - generic [ref=f17e471]: 95%
+            - listitem [ref=f17e473]:
+              - generic [ref=f17e474]:
+                - generic [ref=f17e475]: Star-Delta & Motor Control
+                - generic [ref=f17e476]: 90%
+        - generic [ref=f17e478]:
+          - generic [ref=f17e479]:
+            - generic [ref=f17e480]: 
+            - heading "Simulation & CAD" [level=3] [ref=f17e481]
+            - generic [ref=f17e482]: 05 MODULES
+          - list [ref=f17e483]:
+            - listitem [ref=f17e484]:
+              - generic [ref=f17e485]:
+                - generic [ref=f17e486]: AutoCAD (Electrical / ELV)
+                - generic [ref=f17e487]: 94%
+            - listitem [ref=f17e489]:
+              - generic [ref=f17e490]:
+                - generic [ref=f17e491]: MATLAB / Simulink
+                - generic [ref=f17e492]: 90%
+            - listitem [ref=f17e494]:
+              - generic [ref=f17e495]:
+                - generic [ref=f17e496]: COMSOL Multiphysics
+                - generic [ref=f17e497]: 85%
+            - listitem [ref=f17e499]:
+              - generic [ref=f17e500]:
+                - generic [ref=f17e501]: ETAP & PowerWorld
+                - generic [ref=f17e502]: 82%
+            - listitem [ref=f17e504]:
+              - generic [ref=f17e505]:
+                - generic [ref=f17e506]: Proteus, LTspice, PLECS
+                - generic [ref=f17e507]: 92%
+        - generic [ref=f17e509]:
+          - generic [ref=f17e510]:
+            - generic [ref=f17e511]: 
+            - heading "Embedded & Code" [level=3] [ref=f17e512]
+            - generic [ref=f17e513]: 05 MODULES
+          - list [ref=f17e514]:
+            - listitem [ref=f17e515]:
+              - generic [ref=f17e516]:
+                - generic [ref=f17e517]: C / C++ Programming
+                - generic [ref=f17e518]: 88%
+            - listitem [ref=f17e520]:
+              - generic [ref=f17e521]:
+                - generic [ref=f17e522]: Python Data Analysis
+                - generic [ref=f17e523]: 85%
+            - listitem [ref=f17e525]:
+              - generic [ref=f17e526]:
+                - generic [ref=f17e527]: Verilog HDL
+                - generic [ref=f17e528]: 80%
+            - listitem [ref=f17e530]:
+              - generic [ref=f17e531]:
+                - generic [ref=f17e532]: ESP32 & Arduino Hardware
+                - generic [ref=f17e533]: 90%
+            - listitem [ref=f17e535]:
+              - generic [ref=f17e536]:
+                - generic [ref=f17e537]: CAN Bus & PID Control
+                - generic [ref=f17e538]: 86%
+    - generic [ref=f17e542]:
+      - generic [ref=f17e543]:
+        - generic [ref=f17e544]: 04 / INITIATE CONTACT
+        - heading "Let's build reliable power & automation systems together." [level=2] [ref=f17e545]
+        - paragraph [ref=f17e546]: Available for engineering roles, industrial automation projects, power systems design, and research collaborations.
+      - generic [ref=f17e547]:
+        - link " RESUME / CV DOWNLOAD PDF CV" [ref=f17e548] [cursor=pointer]:
+          - /url: Resume_539_upd.pdf
+          - generic [ref=f17e549]: 
+          - generic [ref=f17e550]:
+            - generic [ref=f17e551]: RESUME / CV
+            - generic [ref=f17e552]: DOWNLOAD PDF CV
+        - link " EMAIL DIRECT shaheertahir1000@gmail.com" [ref=f17e553] [cursor=pointer]:
+          - /url: mailto:shaheertahir1000@gmail.com
+          - generic [ref=f17e554]: 
+          - generic [ref=f17e555]:
+            - generic [ref=f17e556]: EMAIL DIRECT
+            - generic [ref=f17e557]: shaheertahir1000@gmail.com
+        - link " PHONE / WHATSAPP +92 334 5554390" [ref=f17e558] [cursor=pointer]:
+          - /url: tel:+923345554390
+          - generic [ref=f17e559]: 
+          - generic [ref=f17e560]:
+            - generic [ref=f17e561]: PHONE / WHATSAPP
+            - generic [ref=f17e562]: +92 334 5554390
+        - link " LINKEDIN PROFILE /in/shaheer-tahir-rao" [ref=f17e563] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/shaheer-tahir-rao-b22246266/
+          - generic [ref=f17e564]: 
+          - generic [ref=f17e565]:
+            - generic [ref=f17e566]: LINKEDIN PROFILE
+            - generic [ref=f17e567]: /in/shaheer-tahir-rao
+  - contentinfo [ref=f17e568]:
+    - generic [ref=f17e569]:
+      - generic [ref=f17e570]:
+        - generic [ref=f17e571]: SHAHEER TAHIR RAO
+        - generic [ref=f17e572]: © 2026 Shaheer Tahir Rao • PEC Registered Electrical Engineer
+      - generic [ref=f17e573]:
+        - generic [ref=f17e574]:
+          - link "LinkedIn profile" [ref=f17e575] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/shaheer-tahir-rao-b22246266/
+            - generic [ref=f17e576]: 
+          - link "Send an email" [ref=f17e577] [cursor=pointer]:
+            - /url: mailto:shaheertahir1000@gmail.com
+            - generic [ref=f17e578]: 
+          - link "Call or WhatsApp" [ref=f17e579] [cursor=pointer]:
+            - /url: tel:+923345554390
+            - generic [ref=f17e580]: 
+          - link "Download CV as PDF" [ref=f17e581] [cursor=pointer]:
+            - /url: Resume_539_upd.pdf
+            - generic [ref=f17e582]: 
+        - generic [ref=f17e583]:
+          - generic [ref=f17e584]: 
+          - text: "SYSTEM STATUS: ALL TRACES OPTIMAL"
+  - generic [ref=f17e585]:
+    - generic [ref=f17e586]:
+      - generic [ref=f17e587]:
+        - generic [ref=f17e588]: 
+        - text: Cookies & Analytics
+      - paragraph [ref=f17e589]: We use privacy-friendly, cookieless analytics to monitor website telemetry. Nothing runs until you choose.
+    - generic [ref=f17e590]:
+      - button "Reject" [ref=f17e591] [cursor=pointer]
+      - button "Accept" [ref=f17e592] [cursor=pointer]
+  - generic:
+    - generic:
+      - button "×"
+      - generic: PROJECT // SCHEMATIC DETAIL

@@ -126,13 +126,22 @@ const projectDetailsDB = {
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    initDynamicProjects();
+document.addEventListener('DOMContentLoaded', async () => {
+    // Wire the intro first so SKIP responds immediately, before any fetch.
     initIntroVideoLoader();
     initMobileMenu();
     initCookieBanner();
-    initCounterAnimations();
     initHeroVideoPingPong();
+    initHeroEntrance();
+    initCounterAnimations();
+    initScrollProgress();
+    initModalDismissal();
+
+    // Observers run after the cards exist, so they can watch the real markup.
+    await initDynamicProjects();
+    initSkillMeters();
+    initScrollReveal();
+    initScrollSpy();
 });
 
 /* Initial Loading Screen Video Intro Dismissal & Static Viewport Lock */
@@ -169,7 +178,8 @@ function initIntroVideoLoader() {
         window.scrollTo(0, 0);
         
         introLoader.classList.add('fade-out');
-        
+        document.dispatchEvent(new CustomEvent('portfolio:ready'));
+
         setTimeout(() => {
             introLoader.style.display = 'none';
         }, 850);
@@ -256,45 +266,169 @@ function initCookieBanner() {
         banner.style.display = 'none';
     }
 
-    if (acceptBtn) {
-        acceptBtn.addEventListener('click', () => {
-            localStorage.setItem('rao_cookie_consent', 'accepted');
-            banner.style.opacity = '0';
-            setTimeout(() => banner.style.display = 'none', 300);
-        });
-    }
+    const dismiss = choice => {
+        localStorage.setItem('rao_cookie_consent', choice);
+        banner.classList.add('dismissed');
+        setTimeout(() => { banner.style.display = 'none'; }, 320);
+    };
 
-    if (rejectBtn) {
-        rejectBtn.addEventListener('click', () => {
-            localStorage.setItem('rao_cookie_consent', 'rejected');
-            banner.style.opacity = '0';
-            setTimeout(() => banner.style.display = 'none', 300);
-        });
-    }
+    if (acceptBtn) acceptBtn.addEventListener('click', () => dismiss('accepted'));
+    if (rejectBtn) rejectBtn.addEventListener('click', () => dismiss('rejected'));
 }
 
-/* Animated Counters for Hero Metrics */
+/* Animated Counters for the Hero Telemetry Strip.
+   Deferred until the intro overlay clears, otherwise the count finishes behind
+   the splash video and the user never sees it. */
 function initCounterAnimations() {
-    animateVal('cntProjects', 0, 5, 1200);
-    animateVal('cntSkills', 0, 14, 1500);
-    animateVal('cntExperience', 0, 2, 1000);
+    const loader = document.getElementById('introLoader');
+    const introStillUp = loader && loader.style.display !== 'none'
+                         && !loader.classList.contains('fade-out');
+
+    if (introStillUp) {
+        document.addEventListener('portfolio:ready', runCounters, { once: true });
+    } else {
+        runCounters();
+    }
 }
 
-function animateVal(id, start, end, duration) {
-    const obj = document.getElementById(id);
-    if (!obj) return;
+/* Stagger the hero in as the intro overlay fades. The class is only ever added
+   here, so the hero renders normally if scripting never runs. */
+function initHeroEntrance() {
+    const play = () => document.body.classList.add('hero-in');
+    const loader = document.getElementById('introLoader');
+    const introStillUp = loader && loader.style.display !== 'none'
+                         && !loader.classList.contains('fade-out');
 
+    if (introStillUp) {
+        document.addEventListener('portfolio:ready', play, { once: true });
+    } else {
+        play();
+    }
+}
+
+function runCounters() {
+    document.querySelectorAll('[data-count-to]').forEach(el => {
+        const end = parseInt(el.dataset.countTo, 10);
+        const pad = parseInt(el.dataset.pad || '0', 10);
+        if (Number.isNaN(end)) return;
+
+        if (prefersReducedMotion()) {
+            el.textContent = String(end).padStart(pad, '0');
+            return;
+        }
+        animateVal(el, 0, end, 1400, pad);
+    });
+}
+
+function animateVal(el, start, end, duration, pad) {
     let startTimestamp = null;
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        const current = Math.floor(progress * (end - start) + start);
-        obj.innerHTML = current < 10 ? '0' + current : current;
-        if (progress < 1) {
-            window.requestAnimationFrame(step);
-        }
+        const t = Math.min((timestamp - startTimestamp) / duration, 1);
+        // Ease-out so the count decelerates into its final value.
+        const eased = 1 - Math.pow(1 - t, 3);
+        const current = Math.round(eased * (end - start) + start);
+        el.textContent = String(current).padStart(pad, '0');
+        if (t < 1) window.requestAnimationFrame(step);
     };
     window.requestAnimationFrame(step);
+}
+
+function prefersReducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+/* Skill meters fill from 0 to their data-level once scrolled into view. */
+function initSkillMeters() {
+    const bars = document.querySelectorAll('.level-bar i[data-level]');
+    if (!bars.length) return;
+
+    const fill = bar => { bar.style.width = bar.dataset.level + '%'; };
+
+    if (prefersReducedMotion() || !('IntersectionObserver' in window)) {
+        bars.forEach(fill);
+        return;
+    }
+
+    const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            fill(entry.target);
+            obs.unobserve(entry.target);
+        });
+    }, { threshold: 0.25 });
+
+    bars.forEach(bar => io.observe(bar));
+}
+
+/* Fade-and-rise sections in as they enter the viewport. */
+function initScrollReveal() {
+    const targets = document.querySelectorAll('.reveal, .reveal-stagger');
+    if (!targets.length) return;
+
+    if (prefersReducedMotion() || !('IntersectionObserver' in window)) {
+        targets.forEach(el => el.classList.add('is-visible'));
+        return;
+    }
+
+    const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    targets.forEach(el => io.observe(el));
+}
+
+/* Highlight the nav link for whichever section is currently in view. */
+function initScrollSpy() {
+    const links = Array.from(document.querySelectorAll('.nav-link'));
+    const sections = links
+        .map(link => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+    if (!sections.length) return;
+
+    const setActive = id => {
+        links.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+    };
+
+    if (!('IntersectionObserver' in window)) return;
+
+    const io = new IntersectionObserver(entries => {
+        // Pick the entry nearest the top of the viewport among those visible.
+        const visible = entries.filter(e => e.isIntersecting);
+        if (!visible.length) return;
+        visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        setActive(visible[0].target.id);
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+    sections.forEach(sec => io.observe(sec));
+}
+
+/* Thin progress rail across the top of the page. */
+function initScrollProgress() {
+    const rail = document.getElementById('scrollProgress');
+    if (!rail) return;
+
+    let ticking = false;
+    const update = () => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+        rail.style.transform = `scaleX(${Math.min(Math.max(ratio, 0), 1)})`;
+        ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(update);
+    }, { passive: true });
+
+    update();
 }
 
 /* Modal Open / Close Functions */
@@ -306,51 +440,74 @@ function openProjectModal(key) {
     const modalTag = document.getElementById('modalTag');
     const modalBody = document.getElementById('modalBody');
 
-    modalTag.innerText = `PROJECT // ${data.category}`;
+    modalTag.textContent = `PROJECT // ${data.category}`;
 
-    let specsHtml = data.specifications.map(s => `
-        <div style="background: #0f1624; padding: 0.8rem; border-radius: 4px; border: 1px solid #1e2c45;">
-            <span style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-cyan); display: block;">${s.key}</span>
-            <span style="font-family: var(--font-body); font-size: 0.85rem; color: #f1f5f9; font-weight: 500;">${s.val}</span>
-        </div>
-    `).join('');
+    const specsHtml = (data.specifications || []).map(sp => `
+            <div class="modal-spec">
+                <span class="modal-spec-key">${esc(sp.key)}</span>
+                <span class="modal-spec-val">${esc(sp.val)}</span>
+            </div>`).join('');
 
-    let sectionsHtml = data.sections.map(sec => `
-        <li style="margin-bottom: 0.8rem; color: #94a3b8; font-size: 0.92rem; line-height: 1.6;">${sec}</li>
-    `).join('');
+    const sectionsHtml = (data.sections || [])
+        .map(sec => `<li>${esc(sec)}</li>`).join('');
 
     modalBody.innerHTML = `
-        <h2 style="font-family: var(--font-heading); font-size: 2.1rem; color: #f1f5f9; margin-bottom: 0.4rem; font-weight: 700; text-transform: uppercase;">${data.title}</h2>
-        <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan); margin-bottom: 1.2rem;">${data.role} • ${data.timeline}</div>
-        
-        <p style="color: #94a3b8; font-size: 1rem; line-height: 1.7; margin-bottom: 1.8rem;">${data.overview}</p>
-        
-        <h4 style="font-family: var(--font-mono); font-size: 0.8rem; color: #f1f5f9; letter-spacing: 0.1em; margin-bottom: 0.8rem;">TECHNICAL SPECIFICATIONS</h4>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem; margin-bottom: 1.8rem;">
-            ${specsHtml}
-        </div>
+        <h2 class="modal-title">${esc(data.title)}</h2>
+        <div class="modal-sub">${esc(data.role)} &bull; ${esc(data.timeline)}</div>
+        <p class="modal-overview">${esc(data.overview)}</p>
 
-        <h4 style="font-family: var(--font-mono); font-size: 0.8rem; color: #f1f5f9; letter-spacing: 0.1em; margin-bottom: 0.8rem;">ENGINEERING HIGHLIGHTS</h4>
-        <ul style="list-style-type: square; padding-left: 1.2rem; margin-bottom: 1.8rem;">
-            ${sectionsHtml}
-        </ul>
+        <h4 class="modal-heading">TECHNICAL SPECIFICATIONS</h4>
+        <div class="modal-specs-grid">${specsHtml}</div>
 
-        <div style="margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid #1e2c45; display: flex; justify-content: flex-end;">
-            <a href="${data.linkedinUrl}" target="_blank" rel="noopener" class="btn-linkedin-link" style="padding: 0.8rem 1.4rem; font-size: 0.82rem;">
+        <h4 class="modal-heading">ENGINEERING HIGHLIGHTS</h4>
+        <ul class="modal-highlights">${sectionsHtml}</ul>
+
+        <div class="modal-footer">
+            <a href="${esc(data.linkedinUrl)}" target="_blank" rel="noopener" class="btn-linkedin-link">
                 <span>VIEW THIS POST ON LINKEDIN</span>
-                <i class="ri-linkedin-box-fill" style="font-size: 1rem;"></i>
+                <i class="ri-linkedin-box-fill" aria-hidden="true"></i>
             </a>
         </div>
     `;
 
     modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
 }
 
 function closeProjectModal() {
     const modal = document.getElementById('projectModal');
     if (modal) {
         modal.classList.remove('active');
+        document.body.style.overflow = '';
     }
+}
+
+/* Escape untrusted values before they reach innerHTML. Project records can come
+   from localStorage (written by admin.html), so they are not treated as markup. */
+function esc(value) {
+    return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+/* Distinct signal trace per card, so six projects do not share one waveform. */
+const TRACE_PATHS = [
+    'M10,20 L80,20 L95,5 L110,35 L125,10 L140,30 L155,20 L290,20',
+    'M10,20 L100,20 L120,5 L140,20 L160,35 L180,20 L290,20',
+    'M10,30 L60,30 L75,10 L105,10 L120,30 L290,30',
+    'M10,25 L90,25 L105,5 L135,35 L150,25 L290,25',
+    'M10,20 L110,20 L130,10 L150,30 L170,20 L290,20',
+    'M10,20 L70,20 L70,8 L130,8 L130,32 L190,32 L190,20 L290,20'
+];
+
+function traceSvg(index) {
+    const d = TRACE_PATHS[index % TRACE_PATHS.length];
+    return `<svg class="mini-diagram-svg" viewBox="0 0 300 40" aria-hidden="true">
+            <path d="${d}" stroke="#00f0ff" stroke-width="1.5" fill="none"/>
+        </svg>`;
 }
 
 /* Dynamic Projects Rendering from LocalStorage / JSON Dataset */
@@ -366,10 +523,10 @@ async function initDynamicProjects() {
 
     if (!projects || projects.length === 0) {
         try {
-            const res = await fetch('data/projects.json');
+            const res = await fetch('data/projects.json', { cache: 'no-cache' });
             projects = await res.json();
         } catch (err) {
-            console.warn("Using inline fallback projects", err);
+            console.warn('Could not load projects dataset', err);
         }
     }
 
@@ -380,45 +537,61 @@ async function initDynamicProjects() {
         projectDetailsDB[p.id] = p;
     });
 
-    // Render cards into #projectsGrid
-    grid.innerHTML = projects.map(p => {
+    grid.innerHTML = projects.map((p, i) => {
         const metricsHtml = (p.metrics || []).map(m => `
-            <div class="metric-item">
-                <span class="metric-val" style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--text-primary); display: block;">${m.val}</span>
-                <span class="metric-label" style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">${m.label}</span>
-            </div>
-        `).join('');
+                        <div class="metric-item">
+                            <span class="metric-val">${esc(m.val)}</span>
+                            <span class="metric-label">${esc(m.label)}</span>
+                        </div>`).join('');
 
-        const tagsHtml = (p.tags || []).map(t => `<span class="prj-tag" style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-cyan); background: rgba(0,240,255,0.08); border: 1px solid rgba(0,240,255,0.2); padding: 0.2rem 0.5rem; border-radius: 3px;">${t}</span>`).join('');
+        const tagsHtml = (p.tags || [])
+            .map(t => `<span class="prj-tag">${esc(t)}</span>`).join('');
 
         return `
-            <div class="project-card" data-project="${p.id}" onclick="openProjectModal('${p.id}')">
-                <div class="prj-top-diagram">
-                    <svg class="mini-diagram-svg" viewBox="0 0 300 40">
-                        <path d="M10,20 L80,20 L95,5 L110,35 L125,10 L140,30 L155,20 L290,20" stroke="#00f0ff" stroke-width="1.5" fill="none"/>
-                        <circle cx="95" cy="5" r="3" fill="#00f0ff" />
-                        <circle cx="125" cy="10" r="3" fill="#00f0ff" />
-                    </svg>
-                </div>
+            <article class="project-card" data-project="${esc(p.id)}" tabindex="0" role="button"
+                     aria-label="View details for ${esc(p.title)}">
+                <div class="prj-top-diagram">${traceSvg(i)}</div>
                 <div class="prj-content">
-                    <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-cyan); letter-spacing: 0.1em; margin-bottom: 0.5rem; text-transform: uppercase; font-weight: 600;">${p.badge || p.category}</div>
-                    <h3 class="prj-title" style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.6rem;">${p.title}</h3>
-                    <p class="prj-desc" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">${p.overview}</p>
-                    
-                    ${metricsHtml ? `<div class="prj-metrics" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin: 1rem 0; padding: 0.75rem; background: rgba(0,0,0,0.3); border-radius: 4px; border: 1px solid rgba(0,240,255,0.15); text-align: center;">${metricsHtml}</div>` : ''}
-
-                    <div class="prj-tags" style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem;">
-                        ${tagsHtml}
-                    </div>
-
-                    <div class="prj-card-actions" style="margin-top: auto;">
-                        <button class="btn-prj-details" onclick="event.stopPropagation(); openProjectModal('${p.id}')">
-                            <span>VIEW DETAILS & SPECS</span>
-                            <i class="ri-arrow-right-up-line"></i>
+                    <span class="prj-badge">${esc(p.badge || p.category)}</span>
+                    <h3 class="prj-title">${esc(p.title)}</h3>
+                    <p class="prj-desc">${esc(p.overview)}</p>
+                    ${metricsHtml ? `<div class="prj-metrics">${metricsHtml}</div>` : ''}
+                    <div class="prj-tags">${tagsHtml}</div>
+                    <div class="prj-card-actions">
+                        <button class="btn-prj-details" type="button" tabindex="-1">
+                            <span>VIEW DETAILS &amp; SPECS</span>
+                            <i class="ri-arrow-right-up-line" aria-hidden="true"></i>
                         </button>
                     </div>
                 </div>
-            </div>
-        `;
+            </article>`;
     }).join('');
+
+    // One delegated handler covers click and keyboard activation for every card.
+    grid.addEventListener('click', e => {
+        const card = e.target.closest('.project-card');
+        if (card) openProjectModal(card.dataset.project);
+    });
+
+    grid.addEventListener('keydown', e => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const card = e.target.closest('.project-card');
+        if (!card) return;
+        e.preventDefault();
+        openProjectModal(card.dataset.project);
+    });
+}
+
+/* Close the project modal on Escape or backdrop click. */
+function initModalDismissal() {
+    const modal = document.getElementById('projectModal');
+    if (!modal) return;
+
+    modal.addEventListener('click', e => {
+        if (e.target === modal) closeProjectModal();
+    });
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeProjectModal();
+    });
 }

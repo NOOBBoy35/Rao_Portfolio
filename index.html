@@ -7,10 +7,22 @@
     <meta name="description" content="Portfolio of Shaheer Tahir Rao - PEC-Registered Electrical Engineer specializing in power systems, SCADA infrastructure, switchgear protection, and industrial automation.">
     <meta name="keywords" content="Shaheer Tahir Rao, Electrical Engineer, SCADA, Switchgear, Industrial Automation, PLC, HMI, GIKI, NESPAK, PEL, Power Systems">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/favicon.svg">
+    <meta name="theme-color" content="#070b12">
+
+    <!-- Social Share Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Shaheer Tahir Rao | Electrical Engineer & Industrial Automation Specialist">
+    <meta property="og:description" content="PEC-Registered Electrical Engineer specializing in power systems, SCADA infrastructure, switchgear protection, and industrial automation.">
+    <meta property="og:image" content="assets/schematic_card.png">
+    <meta name="twitter:card" content="summary_large_image">
+
     <!-- Unique High-Tech Online Typography (Google Fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Orbitron:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     
     <!-- Vector Icons (RemixIcon / Flaticon Spec) -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
@@ -21,6 +33,7 @@
     <link rel="stylesheet" href="css/mobile.css" media="screen and (max-width: 899px)">
 </head>
 <body class="blueprint-theme intro-active">
+    <div class="scroll-progress" id="scrollProgress"></div>
     <!-- INITIAL INTRO LOADING VIDEO OVERLAY SCREEN -->
     <div class="intro-loader-overlay" id="introLoader">
         <video id="introSplashVideo" autoplay muted playsinline class="intro-video">
@@ -120,6 +133,26 @@
                         PEC-Registered Electrical Engineer specializing in power systems, industrial energy infrastructure, SCADA systems, switchgear protection, and embedded control. Experienced through internships at <strong>NESPAK</strong> and <strong>Pak Elektron Limited (PEL)</strong>.
                     </p>
 
+                    <!-- Live counters animated by initCounterAnimations() -->
+                    <div class="hero-telemetry">
+                        <div class="telemetry-item">
+                            <span class="telemetry-val" data-count-to="6" data-pad="2">00</span>
+                            <span class="telemetry-label">Projects Shipped</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-val" data-count-to="2" data-pad="2">00</span>
+                            <span class="telemetry-label">Industry Internships</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-val" data-count-to="15" data-pad="2">00</span>
+                            <span class="telemetry-label">Technical Skills</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-val">8820<span class="unit">MW</span></span>
+                            <span class="telemetry-label">Hydropower Reviewed</span>
+                        </div>
+                    </div>
+
                     <div class="hero-actions">
                         <a href="#projects" class="btn-primary" id="viewWorkBtn">
                             <span>VIEW SELECTED WORK</span>
@@ -142,11 +175,11 @@
                         <img src="assets/schematic_card.png" alt="Shaheer Tahir Rao - PEC RAO-SCADA 2026 System Architecture & Automation Card" class="schematic-card-img">
                         
                         <!-- Interactive Hotspots over Golden Buttons -->
-                        <a href="#projects" class="card-hotspot hotspot-projects" title="Click to view Projects (05 Selected Work)">
-                            <span class="hotspot-badge">05 PROJECTS</span>
+                        <a href="#projects" class="card-hotspot hotspot-projects" title="Click to view Projects (06 Selected Work)">
+                            <span class="hotspot-badge">06 PROJECTS</span>
                         </a>
-                        <a href="#skills" class="card-hotspot hotspot-skills" title="Click to view Specialization Skills (14 Specializations)">
-                            <span class="hotspot-badge">14 SKILLS</span>
+                        <a href="#skills" class="card-hotspot hotspot-skills" title="Click to view Specialization Skills (15 Specializations)">
+                            <span class="hotspot-badge">15 SKILLS</span>
                         </a>
                         <a href="#experience" class="card-hotspot hotspot-internships" title="Click to view Experience & Internships (NESPAK & PEL)">
                             <span class="hotspot-badge">02 INTERNSHIPS</span>
@@ -176,10 +209,25 @@
                     <div class="profile-tag-col">
                         <span class="section-tag">INPUT / PROFILE</span>
                         <div class="tag-accent-line"></div>
+
+                        <div class="profile-rail-meta">
+                            <div class="rail-stat">
+                                <span class="rail-stat-val">GIKI</span>
+                                <span class="rail-stat-label">BS Electrical Engineering</span>
+                            </div>
+                            <div class="rail-stat">
+                                <span class="rail-stat-val">PEC</span>
+                                <span class="rail-stat-label">Registered Engineer</span>
+                            </div>
+                            <div class="rail-stat">
+                                <span class="rail-stat-val">Lahore, PK</span>
+                                <span class="rail-stat-label">Open to Relocation</span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="profile-content-col">
-                        <div class="design-note-card">
+                        <div class="design-note-card reveal">
                             <!-- HUD Corner Markers -->
                             <span class="hud-corner top-left"></span>
                             <span class="hud-corner top-right"></span>
@@ -198,7 +246,7 @@
                             <div class="quote-container">
                                 <span class="quote-watermark">“</span>
                                 <h3 class="design-note-title">
-                                    "I design electrical systems by following the signal all the way through: from <span class="highlight-cyan">requirement into schematic</span>, across the <span class="highlight-blue">circuit board & switchgear panel</span>, and onto the <span class="highlight-gold">live SCADA/PLC monitor</span>."
+                                    I design electrical systems by following the signal all the way through: from <span class="highlight-cyan">requirement into schematic</span>, across the <span class="highlight-blue">circuit board &amp; switchgear panel</span>, and onto the <span class="highlight-gold">live SCADA/PLC monitor</span>.
                                 </h3>
                             </div>
 
@@ -215,7 +263,7 @@
                             </div>
                             
                             <!-- Education Cards Grid -->
-                            <div class="education-strip">
+                            <div class="education-strip reveal-stagger">
                                 <div class="edu-badge giki-badge">
                                     <div class="edu-header">
                                         <span class="edu-inst"><i class="ri-graduation-cap-line"></i> Ghulam Ishaq Khan Institute (GIKI)</span>
@@ -243,14 +291,14 @@
         <!-- PROFESSIONAL EXPERIENCE SECTION -->
         <section class="experience-section" id="experience">
             <div class="section-container">
-                <div class="section-header">
+                <div class="section-header reveal">
                     <span class="section-tag">01 / PROFESSIONAL EXPERIENCE</span>
                     <h2 class="section-title">Industry Exposure & Internships</h2>
                 </div>
 
                 <div class="experience-timeline">
                     <!-- NESPAK Card -->
-                    <div class="timeline-item">
+                    <div class="timeline-item reveal">
                         <div class="timeline-marker">
                             <div class="marker-dot"></div>
                             <div class="marker-line"></div>
@@ -343,7 +391,7 @@
                     </div>
 
                     <!-- PEL Card -->
-                    <div class="timeline-item">
+                    <div class="timeline-item reveal">
                         <div class="timeline-marker">
                             <div class="marker-dot"></div>
                             <div class="marker-line"></div>
@@ -441,297 +489,13 @@
         <!-- ACADEMIC & TECHNICAL PROJECTS SECTION -->
         <section class="projects-section" id="projects">
             <div class="section-container">
-                <div class="section-header">
+                <div class="section-header reveal">
                     <span class="section-tag">02 / TECHNICAL PROJECTS</span>
                     <h2 class="section-title">Engineering Deliverables & Prototypes</h2>
                 </div>
 
-                <div class="projects-grid" id="projectsGrid">
-                    <!-- Project Card 1: FYP CPR Machine -->
-                    <div class="project-card" data-project="cpr">
-                        <div class="prj-top-diagram">
-                            <svg class="mini-diagram-svg" viewBox="0 0 300 40">
-                                <path d="M10,20 L80,20 L95,5 L110,35 L125,10 L140,30 L155,20 L290,20" stroke="#00f0ff" stroke-width="1.5" fill="none"/>
-                                <circle cx="95" cy="5" r="3" fill="#00f0ff" />
-                                <circle cx="125" cy="10" r="3" fill="#00f0ff" />
-                            </svg>
-                        </div>
-                        <div class="prj-content">
-                            <h3 class="prj-title"><i class="ri-heart-pulse-line"></i> Automated CPR Machine</h3>
-                            <p class="prj-desc">
-                                Final Year Project benchmarked to LUCAS 3 (Stryker). Closed-loop dual-actuation mechanism targeting 102/111/120 ±2 cpm with real-time vitals monitoring.
-                            </p>
-                            <div class="prj-meta-grid">
-                                <div class="meta-cell">
-                                    <span class="meta-lbl">ROLE</span>
-                                    <span class="meta-val">Lead Controls Engineer</span>
-                                </div>
-                                <div class="meta-cell">
-                                    <span class="meta-lbl">TIMELINE</span>
-                                    <span class="meta-val">Sep 2025 – May 2026</span>
-                                </div>
-                                <div class="meta-cell full-width">
-                                    <span class="meta-lbl">GOAL</span>
-                                    <span class="meta-val">45–53 ±2 mm compression & telemetry</span>
-                                </div>
-                            </div>
-                            <div class="prj-tech-stack">
-                                <span class="tag">DC Geared Motor</span>
-                                <span class="tag">Stepper Motor</span>
-                                <span class="tag">Vitals Monitoring</span>
-                                <span class="tag">C++</span>
-                            </div>
-                            
-                            <div class="prj-card-actions">
-                                <button class="btn-view-details" onclick="openProjectModal('cpr')">
-                                    <span>VIEW DETAILS</span>
-                                    <i class="ri-add-line"></i>
-                                </button>
-                                <a href="https://www.linkedin.com/posts/shaheer-tahir-rao-b22246266_electricalengineering-biomedicalengineering-activity-7467236652172677120-UZhm" target="_blank" rel="noopener" class="btn-linkedin-link" title="View CPR Machine project post on LinkedIn">
-                                    <span>LINKEDIN POST</span>
-                                    <i class="ri-linkedin-box-fill"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project Card 2: LVDT -->
-                    <div class="project-card" data-project="lvdt">
-                        <div class="prj-top-diagram">
-                            <svg class="mini-diagram-svg" viewBox="0 0 300 40">
-                                <path d="M10,20 L100,20 L120,5 L140,20 L160,35 L180,20 L290,20" stroke="#00f0ff" stroke-width="1.5" fill="none"/>
-                                <circle cx="120" cy="5" r="3" fill="#00f0ff" />
-                                <circle cx="160" cy="35" r="3" fill="#00f0ff" />
-                            </svg>
-                        </div>
-                        <div class="prj-content">
-                            <h3 class="prj-title"><i class="ri-pulse-line"></i> LVDT Position Transducer</h3>
-                            <p class="prj-desc">
-                                Precision Linear Variable Differential Transformer with 1 primary & 2 matched secondaries in series-differential using 28-AWG copper wire.
-                            </p>
-                            <div class="prj-meta-grid">
-                                <div class="meta-cell">
-                                    <span class="meta-lbl">ROLE</span>
-                                    <span class="meta-val">Hardware Designer</span>
-                                </div>
-                                <div class="meta-cell">
-                                    <span class="meta-lbl">TIMELINE</span>
-                                    <span class="meta-val">Sep 2024 – Jan 2025</span>
-                                </div>
-                                <div class="meta-cell full-width">
-                                    <span class="meta-lbl">GOAL</span>
-                                    <span class="meta-val">Differential output (±45.9 mA null)</span>
-                                </div>
-                            </div>
-                            <div class="prj-tech-stack">
-                                <span class="tag">Electromagnetics</span>
-                                <span class="tag">LTspice</span>
-                                <span class="tag">COMSOL</span>
-                                <span class="tag">28-AWG Wire</span>
-                            </div>
-
-                            <div class="prj-card-actions">
-                                <button class="btn-view-details" onclick="openProjectModal('lvdt')">
-                                    <span>VIEW DETAILS</span>
-                                    <i class="ri-add-line"></i>
-                                </button>
-                                <a href="https://www.linkedin.com/posts/shaheer-tahir-rao-b22246266_instrumentation-electricalengineering-lvdt-share-7355494609902301186-zd2j" target="_blank" rel="noopener" class="btn-linkedin-link" title="View LVDT project post on LinkedIn">
-                                    <span>LINKEDIN POST</span>
-                                    <i class="ri-linkedin-box-fill"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project Card 3: DIY Spot Welder -->
-                    <div class="project-card" data-project="welder">
-                        <div class="prj-top-diagram">
-                            <svg class="mini-diagram-svg" viewBox="0 0 300 40">
-                                <path d="M10,30 L60,30 L75,10 L105,10 L120,30 L290,30" stroke="#00f0ff" stroke-width="1.5" fill="none"/>
-                                <circle cx="75" cy="10" r="3" fill="#00f0ff" />
-                                <circle cx="105" cy="10" r="3" fill="#00f0ff" />
-                            </svg>
-                        </div>
-                        <div class="prj-content">
-                            <h3 class="prj-title"><i class="ri-flashlight-line"></i> Resistance Spot Welder</h3>
-                            <p class="prj-desc">
-                                Heavy-current pulse spot welder using NY-D01 digital controller, foot-switch triggering, and 01–50 cycle (20ms/cycle) timing control.
-                            </p>
-                            <div class="prj-meta-grid">
-                                <div class="meta-cell">
-                                    <span class="meta-lbl">ROLE</span>
-                                    <span class="meta-val">Power Electronics</span>
-                                </div>
-                                <div class="meta-cell">
-                                    <span class="meta-lbl">TIMELINE</span>
-                                    <span class="meta-val">Jan 2024 – May 2024</span>
-                                </div>
-                                <div class="meta-cell full-width">
-                                    <span class="meta-lbl">GOAL</span>
-                                    <span class="meta-val">30–99% intensity (40A thyristor)</span>
-                                </div>
-                            </div>
-                            <div class="prj-tech-stack">
-                                <span class="tag">NY-D01 Controller</span>
-                                <span class="tag">Power Electronics</span>
-                                <span class="tag">AC Phase Control</span>
-                            </div>
-
-                            <div class="prj-card-actions">
-                                <button class="btn-view-details" onclick="openProjectModal('welder')">
-                                    <span>VIEW DETAILS</span>
-                                    <i class="ri-add-line"></i>
-                                </button>
-                                <a href="https://www.linkedin.com/posts/shaheer-tahir-rao-b22246266_throwback-electricalengineering-spotwelder-activity-7354035149132443648-BOVC" target="_blank" rel="noopener" class="btn-linkedin-link" title="View Spot Welder post on LinkedIn">
-                                    <span>LINKEDIN POST</span>
-                                    <i class="ri-linkedin-box-fill"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project Card 4: Regenerative Braking Controller -->
-                    <div class="project-card" data-project="regen">
-                        <div class="prj-top-diagram">
-                            <svg class="mini-diagram-svg" viewBox="0 0 300 40">
-                                <path d="M10,25 L90,25 L105,5 L135,35 L150,25 L290,25" stroke="#00f0ff" stroke-width="1.5" fill="none"/>
-                                <circle cx="105" cy="5" r="3" fill="#00f0ff" />
-                                <circle cx="135" cy="35" r="3" fill="#00f0ff" />
-                            </svg>
-                        </div>
-                        <div class="prj-content">
-                            <h3 class="prj-title"><i class="ri-charging-pile-line"></i> Regenerative Braking</h3>
-                            <p class="prj-desc">
-                                Closed-loop power electronics control for electric vehicle kinetic energy recovery, state-of-charge management, and CAN bus telemetry.
-                            </p>
-                            <div class="prj-meta-grid">
-                                <div class="meta-cell">
-                                    <span class="meta-lbl">ROLE</span>
-                                    <span class="meta-val">Controls Engineer</span>
-                                </div>
-                                <div class="meta-cell">
-                                    <span class="meta-lbl">TIMELINE</span>
-                                    <span class="meta-val">1 Semester</span>
-                                </div>
-                                <div class="meta-cell full-width">
-                                    <span class="meta-lbl">GOAL</span>
-                                    <span class="meta-val">Energy recovery & DC stabilization</span>
-                                </div>
-                            </div>
-                            <div class="prj-tech-stack">
-                                <span class="tag">MATLAB</span>
-                                <span class="tag">Simulink</span>
-                                <span class="tag">C</span>
-                                <span class="tag">CAN Bus</span>
-                            </div>
-
-                            <div class="prj-card-actions">
-                                <button class="btn-view-details" onclick="openProjectModal('regen')">
-                                    <span>VIEW DETAILS</span>
-                                    <i class="ri-add-line"></i>
-                                </button>
-                                <a href="https://www.linkedin.com/in/shaheer-tahir-rao-b22246266/recent-activity/all/" target="_blank" rel="noopener" class="btn-linkedin-link" title="View activity post on LinkedIn">
-                                    <span>LINKEDIN POST</span>
-                                    <i class="ri-linkedin-box-fill"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project Card 5: BJT Amplifier -->
-                    <div class="project-card" data-project="amplifier">
-                        <div class="prj-top-diagram">
-                            <svg class="mini-diagram-svg" viewBox="0 0 300 40">
-                                <path d="M10,20 L110,20 L130,10 L150,30 L170,20 L290,20" stroke="#00f0ff" stroke-width="1.5" fill="none"/>
-                                <circle cx="130" cy="10" r="3" fill="#00f0ff" />
-                            </svg>
-                        </div>
-                        <div class="prj-content">
-                            <h3 class="prj-title"><i class="ri-volume-up-line"></i> 2-Stage BJT Microphone Amp</h3>
-                            <p class="prj-desc">
-                                2-stage BJT audio amplifier with RC inter-stage coupling and push-pull output driver driving a 4W 40Ω load speaker.
-                            </p>
-                            <div class="prj-meta-grid">
-                                <div class="meta-cell">
-                                    <span class="meta-lbl">ROLE</span>
-                                    <span class="meta-val">Analog Circuit Designer</span>
-                                </div>
-                                <div class="meta-cell">
-                                    <span class="meta-lbl">TIMELINE</span>
-                                    <span class="meta-val">Jan 2024 – May 2024</span>
-                                </div>
-                                <div class="meta-cell full-width">
-                                    <span class="meta-lbl">GOAL</span>
-                                    <span class="meta-val">12.65 Vrms output (0.316 Arms)</span>
-                                </div>
-                            </div>
-                            <div class="prj-tech-stack">
-                                <span class="tag">BJT Transistors</span>
-                                <span class="tag">Proteus</span>
-                                <span class="tag">Multisim</span>
-                                <span class="tag">Push-Pull Stage</span>
-                            </div>
-
-                            <div class="prj-card-actions">
-                                <button class="btn-view-details" onclick="openProjectModal('amplifier')">
-                                    <span>VIEW DETAILS</span>
-                                    <i class="ri-add-line"></i>
-                                </button>
-                                <a href="https://www.linkedin.com/in/shaheer-tahir-rao-b22246266/recent-activity/all/" target="_blank" rel="noopener" class="btn-linkedin-link" title="View activity post on LinkedIn">
-                                    <span>LINKEDIN POST</span>
-                                    <i class="ri-linkedin-box-fill"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project Card 6: Industrial PLC & HMI Control -->
-                    <div class="project-card" data-project="plc">
-                        <div class="prj-top-diagram">
-                            <svg class="mini-diagram-svg" viewBox="0 0 300 40">
-                                <path d="M10,20 L140,20 L155,5 L170,35 L185,20 L290,20" stroke="#00f0ff" stroke-width="1.5" fill="none"/>
-                                <circle cx="155" cy="5" r="3" fill="#00f0ff" />
-                            </svg>
-                        </div>
-                        <div class="prj-content">
-                            <h3 class="prj-title"><i class="ri-settings-5-line"></i> Industrial PLC & HMI</h3>
-                            <p class="prj-desc">
-                                Siemens TIA Portal ladder logic programming, interlock logic design, and HMI touch panel interface for automated industrial lines.
-                            </p>
-                            <div class="prj-meta-grid">
-                                <div class="meta-cell">
-                                    <span class="meta-lbl">ROLE</span>
-                                    <span class="meta-val">Automation Engineer</span>
-                                </div>
-                                <div class="meta-cell">
-                                    <span class="meta-lbl">TIMELINE</span>
-                                    <span class="meta-val">2024 – 2026</span>
-                                </div>
-                                <div class="meta-cell full-width">
-                                    <span class="meta-lbl">GOAL</span>
-                                    <span class="meta-val">TIA Portal & Industrial SCADA</span>
-                                </div>
-                            </div>
-                            <div class="prj-tech-stack">
-                                <span class="tag">PLC</span>
-                                <span class="tag">HMI</span>
-                                <span class="tag">TIA Portal</span>
-                                <span class="tag">Ladder Logic</span>
-                                <span class="tag">Automation</span>
-                            </div>
-
-                            <div class="prj-card-actions">
-                                <button class="btn-view-details" onclick="openProjectModal('plc')">
-                                    <span>VIEW DETAILS</span>
-                                    <i class="ri-add-line"></i>
-                                </button>
-                                <a href="https://www.linkedin.com/in/shaheer-tahir-rao-b22246266/recent-activity/all/" target="_blank" rel="noopener" class="btn-linkedin-link" title="View activity post on LinkedIn">
-                                    <span>LINKEDIN POST</span>
-                                    <i class="ri-linkedin-box-fill"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="projects-grid reveal-stagger" id="projectsGrid">
+                    <!-- Cards are rendered from data/projects.json by initDynamicProjects(). -->
                 </div>
             </div>
         </section>
@@ -739,24 +503,55 @@
         <!-- SKILLS & TECHNICAL TOOLKIT SECTION -->
         <section class="skills-section" id="skills">
             <div class="section-container">
-                <div class="section-header">
+                <div class="section-header reveal">
                     <span class="section-tag">03 / TECHNICAL TOOLKIT</span>
                     <h2 class="section-title">Domains, Software & Programming</h2>
                 </div>
 
-                <div class="skills-grid">
+                <div class="skills-grid reveal-stagger">
                     <!-- Column 1: Industrial Automation & Power -->
                     <div class="skill-category-card">
                         <div class="cat-header">
                             <i class="ri-cpu-line cat-icon"></i>
-                            <h3 class="cat-title">Industrial & Power</h3>
+                            <h3 class="cat-title">Industrial &amp; Power</h3>
+                            <span class="cat-count">05 MODULES</span>
                         </div>
                         <ul class="skill-item-list">
-                            <li><span class="skill-name">PLC Programming (TIA Portal)</span> <span class="level-bar"><i style="width: 92%"></i></span></li>
-                            <li><span class="skill-name">HMI & SCADA Systems</span> <span class="level-bar"><i style="width: 90%"></i></span></li>
-                            <li><span class="skill-name">Switchgear & Protection (CT/VT)</span> <span class="level-bar"><i style="width: 88%"></i></span></li>
-                            <li><span class="skill-name">Single Line Diagrams (SLD)</span> <span class="level-bar"><i style="width: 95%"></i></span></li>
-                            <li><span class="skill-name">Star-Delta & Motor Control</span> <span class="level-bar"><i style="width: 90%"></i></span></li>
+                            <li>
+                                <div class="skill-row-head">
+                                    <span class="skill-name">PLC Programming (TIA Portal)</span>
+                                    <span class="skill-pct">92%</span>
+                                </div>
+                                <span class="level-bar"><i data-level="92"></i></span>
+                            </li>
+                            <li>
+                                <div class="skill-row-head">
+                                    <span class="skill-name">HMI & SCADA Systems</span>
+                                    <span class="skill-pct">90%</span>
+                                </div>
+                                <span class="level-bar"><i data-level="90"></i></span>
+                            </li>
+                            <li>
+                                <div class="skill-row-head">
+                                    <span class="skill-name">Switchgear & Protection (CT/VT)</span>
+                                    <span class="skill-pct">88%</span>
+                                </div>
+                                <span class="level-bar"><i data-level="88"></i></span>
+                            </li>
+                            <li>
+                                <div class="skill-row-head">
+                                    <span class="skill-name">Single Line Diagrams (SLD)</span>
+                                    <span class="skill-pct">95%</span>
+                                </div>
+                                <span class="level-bar"><i data-level="95"></i></span>
+                            </li>
+                            <li>
+                                <div class="skill-row-head">
+                                    <span class="skill-name">Star-Delta & Motor Control</span>
+                                    <span class="skill-pct">90%</span>
+                                </div>
+                                <span class="level-bar"><i data-level="90"></i></span>
+                            </li>
                         </ul>
                     </div>
 
@@ -764,14 +559,45 @@
                     <div class="skill-category-card">
                         <div class="cat-header">
                             <i class="ri-computer-line cat-icon"></i>
-                            <h3 class="cat-title">Simulation & CAD</h3>
+                            <h3 class="cat-title">Simulation &amp; CAD</h3>
+                            <span class="cat-count">05 MODULES</span>
                         </div>
                         <ul class="skill-item-list">
-                            <li><span class="skill-name">AutoCAD (Electrical / ELV)</span> <span class="level-bar"><i style="width: 94%"></i></span></li>
-                            <li><span class="skill-name">MATLAB / Simulink</span> <span class="level-bar"><i style="width: 90%"></i></span></li>
-                            <li><span class="skill-name">COMSOL Multiphysics</span> <span class="level-bar"><i style="width: 85%"></i></span></li>
-                            <li><span class="skill-name">ETAP & PowerWorld</span> <span class="level-bar"><i style="width: 82%"></i></span></li>
-                            <li><span class="skill-name">Proteus, LTspice, PLECS</span> <span class="level-bar"><i style="width: 92%"></i></span></li>
+                            <li>
+                                <div class="skill-row-head">
+                                    <span class="skill-name">AutoCAD (Electrical / ELV)</span>
+                                    <span class="skill-pct">94%</span>
+                                </div>
+                                <span class="level-bar"><i data-level="94"></i></span>
+                            </li>
+                            <li>
+                                <div class="skill-row-head">
+                                    <span class="skill-name">MATLAB / Simulink</span>
+                                    <span class="skill-pct">90%</span>
+                                </div>
+                                <span class="level-bar"><i data-level="90"></i></span>
+                            </li>
+                            <li>
+                                <div class="skill-row-head">
+                                    <span class="skill-name">COMSOL Multiphysics</span>
+                                    <span class="skill-pct">85%</span>
+                                </div>
+                                <span class="level-bar"><i data-level="85"></i></span>
+                            </li>
+                            <li>
+                                <div class="skill-row-head">
+                                    <span class="skill-name">ETAP & PowerWorld</span>
+                                    <span class="skill-pct">82%</span>
+                                </div>
+                                <span class="level-bar"><i data-level="82"></i></span>
+                            </li>
+                            <li>
+                                <div class="skill-row-head">
+                                    <span class="skill-name">Proteus, LTspice, PLECS</span>
+                                    <span class="skill-pct">92%</span>
+                                </div>
+                                <span class="level-bar"><i data-level="92"></i></span>
+                            </li>
                         </ul>
                     </div>
 
@@ -779,14 +605,45 @@
                     <div class="skill-category-card">
                         <div class="cat-header">
                             <i class="ri-code-s-slash-line cat-icon"></i>
-                            <h3 class="cat-title">Embedded & Code</h3>
+                            <h3 class="cat-title">Embedded &amp; Code</h3>
+                            <span class="cat-count">05 MODULES</span>
                         </div>
                         <ul class="skill-item-list">
-                            <li><span class="skill-name">C / C++ Programming</span> <span class="level-bar"><i style="width: 88%"></i></span></li>
-                            <li><span class="skill-name">Python Data Analysis</span> <span class="level-bar"><i style="width: 85%"></i></span></li>
-                            <li><span class="skill-name">Verilog HDL</span> <span class="level-bar"><i style="width: 80%"></i></span></li>
-                            <li><span class="skill-name">ESP32 & Arduino Hardware</span> <span class="level-bar"><i style="width: 90%"></i></span></li>
-                            <li><span class="skill-name">CAN Bus & PID Control</span> <span class="level-bar"><i style="width: 86%"></i></span></li>
+                            <li>
+                                <div class="skill-row-head">
+                                    <span class="skill-name">C / C++ Programming</span>
+                                    <span class="skill-pct">88%</span>
+                                </div>
+                                <span class="level-bar"><i data-level="88"></i></span>
+                            </li>
+                            <li>
+                                <div class="skill-row-head">
+                                    <span class="skill-name">Python Data Analysis</span>
+                                    <span class="skill-pct">85%</span>
+                                </div>
+                                <span class="level-bar"><i data-level="85"></i></span>
+                            </li>
+                            <li>
+                                <div class="skill-row-head">
+                                    <span class="skill-name">Verilog HDL</span>
+                                    <span class="skill-pct">80%</span>
+                                </div>
+                                <span class="level-bar"><i data-level="80"></i></span>
+                            </li>
+                            <li>
+                                <div class="skill-row-head">
+                                    <span class="skill-name">ESP32 & Arduino Hardware</span>
+                                    <span class="skill-pct">90%</span>
+                                </div>
+                                <span class="level-bar"><i data-level="90"></i></span>
+                            </li>
+                            <li>
+                                <div class="skill-row-head">
+                                    <span class="skill-name">CAN Bus & PID Control</span>
+                                    <span class="skill-pct">86%</span>
+                                </div>
+                                <span class="level-bar"><i data-level="86"></i></span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -796,14 +653,14 @@
         <!-- CONTACT SECTION -->
         <section class="contact-section" id="contact">
             <div class="section-container">
-                <div class="contact-box">
+                <div class="contact-box reveal">
                     <div class="contact-header">
                         <span class="section-tag">04 / INITIATE CONTACT</span>
                         <h2 class="contact-title">Let's build reliable power & automation systems together.</h2>
                         <p class="contact-sub">Available for engineering roles, industrial automation projects, power systems design, and research collaborations.</p>
                     </div>
 
-                    <div class="contact-cards-grid">
+                    <div class="contact-cards-grid reveal-stagger">
                         <a href="Resume_539_upd.pdf" download="Shaheer_Tahir_Rao_Resume.pdf" class="contact-card download-card">
                             <i class="ri-file-download-line card-icon"></i>
                             <div class="card-info">
@@ -832,7 +689,7 @@
                             <i class="ri-linkedin-box-line card-icon"></i>
                             <div class="card-info">
                                 <span class="info-label">LINKEDIN PROFILE</span>
-                                <span class="info-val">linkedin.com/in/shaheer-tahir-rao-b22246266</span>
+                                <span class="info-val">/in/shaheer-tahir-rao</span>
                             </div>
                         </a>
                     </div>
@@ -849,6 +706,20 @@
                 <span class="ft-copy">© 2026 Shaheer Tahir Rao • PEC Registered Electrical Engineer</span>
             </div>
             <div class="footer-right">
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/shaheer-tahir-rao-b22246266/" target="_blank" rel="noopener" class="ft-social" aria-label="LinkedIn profile" title="LinkedIn">
+                        <i class="ri-linkedin-fill"></i>
+                    </a>
+                    <a href="mailto:shaheertahir1000@gmail.com" class="ft-social" aria-label="Send an email" title="Email">
+                        <i class="ri-mail-line"></i>
+                    </a>
+                    <a href="tel:+923345554390" class="ft-social" aria-label="Call or WhatsApp" title="Phone">
+                        <i class="ri-phone-line"></i>
+                    </a>
+                    <a href="Resume_539_upd.pdf" download="Shaheer_Tahir_Rao_Resume.pdf" class="ft-social" aria-label="Download CV as PDF" title="Download CV">
+                        <i class="ri-file-download-line"></i>
+                    </a>
+                </div>
                 <span class="ft-rev"><i class="ri-pulse-line"></i> SYSTEM STATUS: ALL TRACES OPTIMAL</span>
             </div>
         </div>

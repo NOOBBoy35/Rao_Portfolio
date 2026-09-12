@@ -627,7 +627,7 @@
 
             if (!projectsData || projectsData.length === 0) {
                 try {
-                    const res = await fetch('data/projects.json');
+                    const res = await fetch('data/projects.json', { cache: 'no-cache' });
                     projectsData = await res.json();
                 } catch (err) {
                     console.warn("Using default fallback dataset", err);

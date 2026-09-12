@@ -84,3 +84,36 @@
         font-size: 4.6rem;
     }
 }
+
+/* ==========================================================================
+   NARROW DESKTOP / TABLET LANDSCAPE
+   Between 900px and 1200px a 3-up project grid and a 4-up contact grid leave
+   each cell too narrow to read, so step both down a column.
+   ========================================================================== */
+@media screen and (min-width: 900px) and (max-width: 1199px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-telemetry {
+        grid-template-columns: repeat(2, auto);
+        gap: 1.2rem 2rem;
+    }
+
+    .hero-title {
+        font-size: 3.4rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.45rem;
+    }
+
+    .profile-grid {
+        grid-template-columns: 190px 1fr;
+        gap: 2rem;
+    }
+}

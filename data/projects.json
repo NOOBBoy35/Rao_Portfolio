@@ -10,17 +10,44 @@
     "linkedinUrl": "https://www.linkedin.com/posts/shaheer-tahir-rao-b22246266_electricalengineering-biomedicalengineering-activity-7467236652172677120-UZhm",
     "overview": "Benchmarked to Stryker LUCAS 3, this system delivers continuous, high-precision chest compressions with dual-actuation force & height control, integrated real-time vitals monitoring, and telemetry logging.",
     "metrics": [
-      { "val": "102–120", "label": "COMPRESSIONS / MIN" },
-      { "val": "45–53 mm", "label": "DEPTH PRECISION" },
-      { "val": "PID", "label": "CLOSED-LOOP FORCE" }
+      {
+        "val": "102–120",
+        "label": "COMPRESSIONS / MIN"
+      },
+      {
+        "val": "45–53 mm",
+        "label": "DEPTH PRECISION"
+      },
+      {
+        "val": "PID",
+        "label": "CLOSED-LOOP FORCE"
+      }
     ],
     "specifications": [
-      { "key": "Compression Rate", "val": "102 / 111 / 120 ±2 cpm" },
-      { "key": "Compression Depth", "val": "45–53 ±2 mm" },
-      { "key": "Duty Cycle", "val": "50 ±5%" },
-      { "key": "Primary Compression Motor", "val": "High-Torque DC Geared Motor" },
-      { "key": "Positioning Motor", "val": "NEMA Stepper Motor" },
-      { "key": "Vitals Sensors", "val": "Heart Rate & Blood Pressure Telemetry" }
+      {
+        "key": "Compression Rate",
+        "val": "102 / 111 / 120 ±2 cpm"
+      },
+      {
+        "key": "Compression Depth",
+        "val": "45–53 ±2 mm"
+      },
+      {
+        "key": "Duty Cycle",
+        "val": "50 ±5%"
+      },
+      {
+        "key": "Primary Compression Motor",
+        "val": "High-Torque DC Geared Motor"
+      },
+      {
+        "key": "Positioning Motor",
+        "val": "NEMA Stepper Motor"
+      },
+      {
+        "key": "Vitals Sensors",
+        "val": "Heart Rate & Blood Pressure Telemetry"
+      }
     ],
     "sections": [
       "Dual-Actuation Mechanics: DC geared motor for precise torque/depth control + stepper motor for automatic chest height adjustment.",
@@ -28,7 +55,13 @@
       "Real-Time Telemetry: Onboard sensor integration displaying live vitals on OLED panel and logging operational data.",
       "Safety & Interlocks: Emergency stop, current limiters, and over-depth mechanical stops."
     ],
-    "tags": ["PID Control", "Mechatronics", "Biomedical", "DC Motors", "Embedded C"]
+    "tags": [
+      "PID Control",
+      "Mechatronics",
+      "Biomedical",
+      "DC Motors",
+      "Embedded C"
+    ]
   },
   {
     "id": "lvdt",
@@ -41,23 +74,53 @@
     "linkedinUrl": "https://www.linkedin.com/posts/shaheer-tahir-rao-b22246266_instrumentation-electricalengineering-lvdt-share-7355494609902301186-zd2j",
     "overview": "Designed, wound, and calibrated a high-precision mini LVDT position transducer with 1 primary coil and 2 matched secondary coils connected in series-differential mode.",
     "metrics": [
-      { "val": "±45.9 mA", "label": "NULL CURRENT" },
-      { "val": "28 AWG", "label": "COPPER WINDING" },
-      { "val": "COMSOL", "label": "EM FIELD VERIFIED" }
+      {
+        "val": "±45.9 mA",
+        "label": "NULL CURRENT"
+      },
+      {
+        "val": "28 AWG",
+        "label": "COPPER WINDING"
+      },
+      {
+        "val": "COMSOL",
+        "label": "EM FIELD VERIFIED"
+      }
     ],
     "specifications": [
-      { "key": "Winding Material", "val": "28-AWG Enameled Copper Wire" },
-      { "key": "Turns count", "val": "~120 turns per coil" },
-      { "key": "Null Output Current", "val": "±45.9 mA symmetric" },
-      { "key": "Core Material", "val": "Moving Ferromagnetic Solenoid Core" },
-      { "key": "Configuration", "val": "Series-Differential Connection" }
+      {
+        "key": "Winding Material",
+        "val": "28-AWG Enameled Copper Wire"
+      },
+      {
+        "key": "Turns count",
+        "val": "~120 turns per coil"
+      },
+      {
+        "key": "Null Output Current",
+        "val": "±45.9 mA symmetric"
+      },
+      {
+        "key": "Core Material",
+        "val": "Moving Ferromagnetic Solenoid Core"
+      },
+      {
+        "key": "Configuration",
+        "val": "Series-Differential Connection"
+      }
     ],
     "sections": [
       "Coil Architecture: Wound matching secondary coils to ensure exact zero-phase shift at null position.",
       "Differential Calibration: Confirmed linear differential voltage/current response across ±20mm displacement.",
       "Simulation Verification: Modeled electromagnetic field distribution in COMSOL Multiphysics and LTspice."
     ],
-    "tags": ["Electromagnetics", "LVDT", "COMSOL", "Sensors", "Signal Conditioning"]
+    "tags": [
+      "Electromagnetics",
+      "LVDT",
+      "COMSOL",
+      "Sensors",
+      "Signal Conditioning"
+    ]
   },
   {
     "id": "welder",
@@ -70,23 +133,53 @@
     "linkedinUrl": "https://www.linkedin.com/posts/shaheer-tahir-rao-b22246266_throwback-electricalengineering-spotwelder-activity-7354035149132443648-BOVC",
     "overview": "Constructed a high-current resistance spot welder with precise digital pulse timing and foot-switch actuation using the NY-D01 controller.",
     "metrics": [
-      { "val": "20 ms", "label": "PULSE RESOLUTION" },
-      { "val": "40A SCR", "label": "THYRISTOR RATING" },
-      { "val": "NY-D01", "label": "DIGITAL CONTROL" }
+      {
+        "val": "20 ms",
+        "label": "PULSE RESOLUTION"
+      },
+      {
+        "val": "40A SCR",
+        "label": "THYRISTOR RATING"
+      },
+      {
+        "val": "NY-D01",
+        "label": "DIGITAL CONTROL"
+      }
     ],
     "specifications": [
-      { "key": "Controller Unit", "val": "NY-D01 Digital Pulse Controller" },
-      { "key": "Weld Pulse Range", "val": "01–50 cycles (20 ms / cycle)" },
-      { "key": "Current Intensity Range", "val": "30–99% power tuning" },
-      { "key": "Thyristor Capacity", "val": "40A SCR Phase Control" },
-      { "key": "Actuation", "val": "Foot-switch trigger with safety interlock" }
+      {
+        "key": "Controller Unit",
+        "val": "NY-D01 Digital Pulse Controller"
+      },
+      {
+        "key": "Weld Pulse Range",
+        "val": "01–50 cycles (20 ms / cycle)"
+      },
+      {
+        "key": "Current Intensity Range",
+        "val": "30–99% power tuning"
+      },
+      {
+        "key": "Thyristor Capacity",
+        "val": "40A SCR Phase Control"
+      },
+      {
+        "key": "Actuation",
+        "val": "Foot-switch trigger with safety interlock"
+      }
     ],
     "sections": [
       "Pulse Timing Control: Configured 20ms AC zero-crossing pulse cycles for repeatable nickel-strip welds.",
       "Enclosure & Safety Integration: Integrated high-current busbars, thermal heatsinks, and fused mains protection.",
       "Deliverables: Produced AutoCAD wiring schematics and enclosure layout drawings."
     ],
-    "tags": ["Power Electronics", "SCR Control", "AC Pulse", "High Current", "AutoCAD"]
+    "tags": [
+      "Power Electronics",
+      "SCR Control",
+      "AC Pulse",
+      "High Current",
+      "AutoCAD"
+    ]
   },
   {
     "id": "regen",
@@ -99,22 +192,49 @@
     "linkedinUrl": "https://www.linkedin.com/in/shaheer-tahir-rao-b22246266/recent-activity/all/",
     "overview": "Developed a closed-loop power electronics control strategy for kinetic energy recovery during vehicle deceleration, channeling power back to battery storage while stabilizing DC bus voltage.",
     "metrics": [
-      { "val": "Simulink", "label": "CLOSED LOOP" },
-      { "val": "CAN Bus", "label": "TELEMETRY" },
-      { "val": "Bi-Direct", "label": "DC-DC CONVERTER" }
+      {
+        "val": "Simulink",
+        "label": "CLOSED LOOP"
+      },
+      {
+        "val": "CAN Bus",
+        "label": "TELEMETRY"
+      },
+      {
+        "val": "Bi-Direct",
+        "label": "DC-DC CONVERTER"
+      }
     ],
     "specifications": [
-      { "key": "Control Software", "val": "MATLAB / Simulink" },
-      { "key": "Programming", "val": "C Language Embedded Control" },
-      { "key": "Communication Bus", "val": "CAN Bus Protocol" },
-      { "key": "Topology", "val": "Bi-directional DC-DC Converter" }
+      {
+        "key": "Control Software",
+        "val": "MATLAB / Simulink"
+      },
+      {
+        "key": "Programming",
+        "val": "C Language Embedded Control"
+      },
+      {
+        "key": "Communication Bus",
+        "val": "CAN Bus Protocol"
+      },
+      {
+        "key": "Topology",
+        "val": "Bi-directional DC-DC Converter"
+      }
     ],
     "sections": [
       "Bi-Directional Converter: Modeled buck-boost power stage for seamless transition between motoring and braking.",
       "CAN Bus Integration: Streamed real-time wheel speed, battery state of charge (SOC), and torque demand.",
       "PID Tuning: Optimized current loop response time to eliminate braking jerk and back-EMF spikes."
     ],
-    "tags": ["MATLAB", "Simulink", "EV Controls", "CAN Bus", "Power Electronics"]
+    "tags": [
+      "MATLAB",
+      "Simulink",
+      "EV Controls",
+      "CAN Bus",
+      "Power Electronics"
+    ]
   },
   {
     "id": "amplifier",
@@ -127,22 +247,106 @@
     "linkedinUrl": "https://www.linkedin.com/in/shaheer-tahir-rao-b22246266/recent-activity/all/",
     "overview": "Designed and built a 2-stage BJT audio amplifier featuring RC coupling between amplification stages and a high-efficiency push-pull driver stage.",
     "metrics": [
-      { "val": "12.65 Vrms", "label": "PEAK VOLTAGE" },
-      { "val": "Class-AB", "label": "PUSH-PULL DRIVER" },
-      { "val": "4 W / 40 Ω", "label": "SPEAKER LOAD" }
+      {
+        "val": "12.65 Vrms",
+        "label": "PEAK VOLTAGE"
+      },
+      {
+        "val": "Class-AB",
+        "label": "PUSH-PULL DRIVER"
+      },
+      {
+        "val": "4 W / 40 Ω",
+        "label": "SPEAKER LOAD"
+      }
     ],
     "specifications": [
-      { "key": "Output Driver", "val": "Class-AB Push-Pull BJT Pair" },
-      { "key": "Speaker Load", "val": "4 W, 40 Ω Loudspeaker" },
-      { "key": "Peak Output Voltage", "val": "≈ 12.65 Vrms" },
-      { "key": "Peak Output Current", "val": "0.316 Arms at full power" },
-      { "key": "Stage Coupling", "val": "Capacitive RC Coupling" }
+      {
+        "key": "Output Driver",
+        "val": "Class-AB Push-Pull BJT Pair"
+      },
+      {
+        "key": "Speaker Load",
+        "val": "4 W, 40 Ω Loudspeaker"
+      },
+      {
+        "key": "Peak Output Voltage",
+        "val": "≈ 12.65 Vrms"
+      },
+      {
+        "key": "Peak Output Current",
+        "val": "0.316 Arms at full power"
+      },
+      {
+        "key": "Stage Coupling",
+        "val": "Capacitive RC Coupling"
+      }
     ],
     "sections": [
       "Small-Signal Analysis: Calculated transistor biasing, input/output impedance, and AC voltage gain.",
       "Push-Pull Output Stage: Implemented diode-biased Class-AB output to eliminate crossover distortion.",
       "LTspice Verification: Verified frequency response (20Hz–20kHz bandwidth) and Total Harmonic Distortion (THD)."
     ],
-    "tags": ["Analog Electronics", "BJT Amplifiers", "LTspice", "Push-Pull Driver", "Audio Engineering"]
+    "tags": [
+      "Analog Electronics",
+      "BJT Amplifiers",
+      "LTspice",
+      "Push-Pull Driver",
+      "Audio Engineering"
+    ]
+  },
+  {
+    "id": "plc",
+    "title": "Industrial PLC & HMI Automation System",
+    "category": "SCADA & INDUSTRIAL CONTROLS",
+    "badge": "INDUSTRIAL • AUTOMATION",
+    "timeline": "2024 – 2026 Projects",
+    "role": "Automation Specialist",
+    "linkedinUrl": "https://www.linkedin.com/in/shaheer-tahir-rao-b22246266/recent-activity/all/",
+    "overview": "Developed complete PLC ladder logic programs and HMI visualization layouts using Siemens TIA Portal for industrial automated lines and motor protection panels.",
+    "metrics": [
+      {
+        "val": "TIA",
+        "label": "SIEMENS PORTAL"
+      },
+      {
+        "val": "61131-3",
+        "label": "IEC STANDARD"
+      },
+      {
+        "val": "LADDER",
+        "label": "FBD LOGIC"
+      }
+    ],
+    "specifications": [
+      {
+        "key": "Software Environment",
+        "val": "Siemens TIA Portal"
+      },
+      {
+        "key": "Programming Standard",
+        "val": "IEC 61131-3 (Ladder / FBD)"
+      },
+      {
+        "key": "Interlock Logic",
+        "val": "Safety & Emergency Stop Sequences"
+      },
+      {
+        "key": "HMI Interface",
+        "val": "Touch Panel Graphics & Alarm Banners"
+      }
+    ],
+    "sections": [
+      "Star-Delta Control: Designed automated timer transitions and current-limiting interlocks for high-power motors.",
+      "HMI Screen Design: Built real-time trend charts, fault indicators, and manual control overrides.",
+      "Hardware Testing: Validated input/output modules, relay cards, and sensor wiring."
+    ],
+    "tags": [
+      "PLC",
+      "HMI",
+      "TIA Portal",
+      "Ladder Logic",
+      "Automation"
+    ]
   }
 ]
