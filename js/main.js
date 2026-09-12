@@ -451,6 +451,17 @@ function openProjectModal(key) {
     const sectionsHtml = (data.sections || [])
         .map(sec => `<li>${esc(sec)}</li>`).join('');
 
+    // Projects added through admin.html may have no LinkedIn post. An empty
+    // href would just reload the page, so omit the button entirely.
+    const link = (data.linkedinUrl || '').trim();
+    const footerHtml = link ? `
+        <div class="modal-footer">
+            <a href="${esc(link)}" target="_blank" rel="noopener" class="btn-linkedin-link">
+                <span>VIEW THIS POST ON LINKEDIN</span>
+                <i class="ri-linkedin-box-fill" aria-hidden="true"></i>
+            </a>
+        </div>` : '';
+
     modalBody.innerHTML = `
         <h2 class="modal-title">${esc(data.title)}</h2>
         <div class="modal-sub">${esc(data.role)} &bull; ${esc(data.timeline)}</div>
@@ -461,13 +472,7 @@ function openProjectModal(key) {
 
         <h4 class="modal-heading">ENGINEERING HIGHLIGHTS</h4>
         <ul class="modal-highlights">${sectionsHtml}</ul>
-
-        <div class="modal-footer">
-            <a href="${esc(data.linkedinUrl)}" target="_blank" rel="noopener" class="btn-linkedin-link">
-                <span>VIEW THIS POST ON LINKEDIN</span>
-                <i class="ri-linkedin-box-fill" aria-hidden="true"></i>
-            </a>
-        </div>
+        ${footerHtml}
     `;
 
     modal.classList.add('active');
